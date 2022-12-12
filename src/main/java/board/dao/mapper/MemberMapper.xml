@@ -7,8 +7,8 @@
     
 <mapper namespace="board.dao.face.MemberDao">
 	<insert id="insert" parameterType="Member">
-		INSERT INTO member ( id, pw, nick ) 
-		VALUES ( #{id}, #{pw}, #{nick} )
+		INSERT INTO member ( id, pw, nick, name, gender, phone, address, email ) 
+		VALUES ( #{id}, #{pw}, #{nick}, #{name}, #{gender}, #{phone}, #{addr}, #{email} )
 	</insert>
 
 	<select id="selectCntByIdPw" resultType="int" parameterType="Member">

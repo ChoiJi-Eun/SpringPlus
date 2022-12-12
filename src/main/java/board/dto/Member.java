@@ -7,30 +7,30 @@ public class Member {
 	private String nick; //기존
 	
 	private String name; //추가
-	private String birth;
 	private String gender;
-	private String email;
 	private String phone;
+	private String addr;
+	private String email;
 	
 	public Member() {	}
 
-	public Member(String id, String pw, String nick, String name, String birth, String gender, String email,
-			String phone) {
+	public Member(String id, String pw, String nick, String name, String gender, String phone, String addr,
+			String email) {
 		super();
 		this.id = id;
 		this.pw = pw;
 		this.nick = nick;
 		this.name = name;
-		this.birth = birth;
 		this.gender = gender;
-		this.email = email;
 		this.phone = phone;
+		this.addr = addr;
+		this.email = email;
 	}
 
 	@Override
 	public String toString() {
-		return "Member [id=" + id + ", pw=" + pw + ", nick=" + nick + ", name=" + name + ", birth=" + birth
-				+ ", gender=" + gender + ", email=" + email + ", phone=" + phone + "]";
+		return "Member [id=" + id + ", pw=" + pw + ", nick=" + nick + ", name=" + name + ", gender=" + gender
+				+ ", phone=" + phone + ", addr=" + addr + ", email=" + email + "]";
 	}
 
 	public String getId() {
@@ -65,20 +65,28 @@ public class Member {
 		this.name = name;
 	}
 
-	public String getBirth() {
-		return birth;
-	}
-
-	public void setBirth(String birth) {
-		this.birth = birth;
-	}
-
 	public String getGender() {
 		return gender;
 	}
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getAddr() {
+		return addr;
+	}
+
+	public void setAddr(String addr) {
+		this.addr = addr;
 	}
 
 	public String getEmail() {
@@ -89,12 +97,5 @@ public class Member {
 		this.email = email;
 	}
 
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
 	
 }
