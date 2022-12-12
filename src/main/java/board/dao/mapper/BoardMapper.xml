@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 마이바티스 3 Mapper DTD -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="board.dao.face.BoardDao">
+	<select id="selectList" resultType="Board">
+		SELECT * FROM board
+		ORDER BY board_no
+	</select>
+	
+<!-- 	<select id="selectAll" resultType="Board" parameterType="Paging"> -->
+	<select id="selectAll" resultType="hashmap" parameterType="Paging">
+		SELECT * FROM (
+			SELECT rownum rnum, B.* FROM (
+--				SELECT
+--					board_no, title, content , writer_id
+--					, writer_nick, hit, write_date
+--				FROM board
+--				ORDER BY board_no DESC
+
+
+				SELECT
+					BD.*
+					, BF.file_no, BF.origin_name, BF.stored_name
+				FROM board BD
+				LEFT OUTER JOIN boardfile BF
+				    ON BD.board_no = BF.board_no
+				ORDER BY BD.board_no DESC
+			) B
+		) BOARD
+		WHERE rnum BETWEEN #{startNo } AND #{endNo }
+	</select>
+	
+	<select id="selectCntAll" resultType="int">  
+		SELECT count(*) FROM board
+	</select>
+
+
+	<select id="select" resultType="Board" parameterType="int">
+		SELECT * FROM board
+		WHERE board_no = #{boardNo}
+	</select>
+
+
+	<update id="hit" parameterType="int">
+		UPDATE board SET hit = hit + 1
+		WHERE board_no = #{boardNo}
+	</update>
+	
+	<insert id="insertBoard" parameterType="Board">
+		<selectKey order="BEFORE" resultType="int" keyProperty="boardNo">
+			SELECT board_seq.nextval FROM dual
+		</selectKey>
+	
+		INSERT INTO board ( board_no, title, content , writer_id, writer_nick )
+		VALUES ( #{boardNo }, #{title }, #{content }, #{writerId }, #{writerNick } )
+	</insert>
+	
+	<insert id="insertFile" parameterType="BoardFile">
+		INSERT INTO boardfile ( file_no, board_no, origin_name, stored_name)
+		VALUES ( boardfile_seq.nextval, #{boardNo }, #{originName }, #{storedName } )
+	</insert>
+	
+	<select id="selectBoardFileByBoardNo" resultType="BoardFile" parameterType="Board">
+		SELECT * FROM boardfile 
+		WHERE board_no = #{boardNo}
+	</select>
+
+	<select id="selectCntBoardFileByBoardNo" resultType="int" parameterType="Board">
+		SELECT count(*) FROM boardfile 
+		WHERE board_no = #{boardNo}
+	</select>
+
+<!-- update -->
+	<select id="selectBoard" resultType="Board" parameterType="Board">
+		SELECT * FROM board
+		WHERE board_no = #{boardNo}
+	</select>
+	
+	<update id="updateBoard" parameterType="Board">
+		UPDATE Board SET title=#{title}, content=#{content}
+		WHERE board_no = #{boardNo}
+	</update>
+	
+	<delete id="deleteFile" parameterType="Board">
+		DELETE FROM boardfile
+		WHERE board_no = #{boardNo}
+	</delete>
+	
+	<delete id="delete" parameterType="Board">
+		DELETE FROM board
+		WHERE board_no = #{boardNo}
+	</delete>
+</mapper>    
+
+
+

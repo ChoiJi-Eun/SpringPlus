@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 마이바티스 3 Mapper DTD -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="board.dao.face.MemberDao">
+	<insert id="insert" parameterType="Member">
+		INSERT INTO member ( id, pw, nick ) 
+		VALUES ( #{id}, #{pw}, #{nick} )
+	</insert>
+
+	<select id="selectCntByIdPw" resultType="int" parameterType="Member">
+		SELECT count(*) FROM member
+		WHERE id = #{id} AND pw = #{pw}
+	</select>
+	
+	<select id="selectNick" resultType="string" parameterType="Member">
+		SELECT nick FROM member
+		WHERE id = #{id}
+	</select>
+
+
+</mapper>    
+
+

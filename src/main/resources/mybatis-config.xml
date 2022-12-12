@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 마이바티스 3 Configuration DTD -->
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<configuration>
+
+	<!-- 마이바티스 동작방식 추가 설정 -->
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+
+	<!-- DTO클래스의 별칭 적용 -->
+	<typeAliases>
+		<package name="board"/>
+
+	</typeAliases>
+
+
+</configuration>
+
+
+
+
+  
