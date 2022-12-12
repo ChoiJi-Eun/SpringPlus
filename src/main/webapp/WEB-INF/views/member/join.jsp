@@ -32,19 +32,20 @@ button { margin-left: 100px; }
 	<label>닉네임</label>
 	<input type="text" id="nick" name="nick"><br>
 	
-	<label></label>
-	<input type="text" id="" name=""><br>
+	<label>이름</label>
+	<input type="text" id="name" name="name"><br>
 	
-	<label></label>
-	<input type="password" id="" name=""><br>
+	<label>생년월일</label>
+	<input type="text" id="birth" name="birth"><br>
 	
-	<label></label>
-	<input type="text" id="" name=""><br>
+	<label>성별</label>
+	<input type="radio" id="birth" name="birth"><br>
 	
-	<label></label>
-	<input type="password" id="" name=""><br><br>
+	<label>전화번호</label>
+	<input type="text" id="phone" name="phone"><br>
 	
-	
+	<label>이메일</label>
+	<input type="email" id="email" name="email"><br><br>
 	
 	<button>회원가입</button>
 
