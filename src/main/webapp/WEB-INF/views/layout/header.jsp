@@ -46,5 +46,5 @@
 <div class="wrap">
 
 <header class="header">
-	<h1>스프링 보드</h1>
+	<h1>스프링 플러스</h1>
 </header>

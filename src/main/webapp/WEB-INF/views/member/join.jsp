@@ -20,7 +20,7 @@ $(document).ready(function() {			/* 유효성 검증 */
 		if( validate() ) {
 			$(this).submit()
 		}
-		return false			 /* submit 중단 시키기 */
+		return false //submit 중단 시키기
 	})
 
 	//아이디 입력을 시도할 때 아이디 메시지 삭제하기
@@ -107,13 +107,16 @@ function validate() {
 #submit { margin-left: 100px; }
 img { width: 15px; height: 15px; margin-bottom: 7px; }
 span { margin-left: 10px; font-weight: bolder; color: red;  }
+input {
+	margin-bottom: 5px;
+}
 </style>
 
 <br><h4>회원 가입 페이지</h4>
 <hr>
 
 <div id="join">
-<form action="<%=request.getContextPath() %>./join" method="post">
+<form action="<%=request.getContextPath() %>./join" method="post" onsubmit="return validate();"> 
 
 	<label>아이디<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
 	<input type="text" id="id" name="id" required>
