@@ -35,8 +35,11 @@ $(document).ready(function() {			/* 유효성 검증 */
 	$("#pw_check").focus(function() {
 		$("#pw_check_msg").html('')
 	})
-	//전화번호 입력을 시도할 때 아이디 메시지 삭제하기
-	$("#phone").focus(function() {
+	//전화번호 입력을 시도할 때 전화번호 메시지 삭제하기
+	$("#phone2").focus(function() {
+		$("#phonemsg").html('')
+	})
+	$("#phone3").focus(function() {
 		$("#phonemsg").html('')
 	})
 	
@@ -75,10 +78,15 @@ function validate() {
 	
 	//-----전화번호 유효성 검증	
 	// 전화번호 입력값 검증
-	if( !/^[0-9]{4}$/.test( $("#phone").val() )  ) {
-		$("#phonemsg").html("전화번호는 각각 4자리만 가능합니다")	
+	if( !/^[0-9]{4}$/.test( $("#phone2").val() )  ) {
+		$("#phonemsg").html("phone2 전화번호는 각각 숫자 4자리만 가능합니다")	
 		return false
 	}
+	if( !/^[0-9]{4}$/.test( $("#phone3").val() )  ) {
+		$("#phonemsg").html("phone3 전화번호는 각각 숫자 4자리만 가능합니다")	
+		return false
+	}
+
 	
 	
 	
