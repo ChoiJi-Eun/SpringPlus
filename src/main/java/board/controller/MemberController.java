@@ -41,6 +41,19 @@ public class MemberController {
 		
 		memberService.join(memberParam);
 		
+		
+		int result = memberService.idChk(memberParam);
+		
+			if(result == 1) {
+				return "/member/join";
+			}else if(result == 0) {
+//				memberService.
+			}
+			// 요기에서~ 입력된 아이디가 존재한다면 -> 다시 시도
+			// 존재하지 않는다면 -> 그대로 진행하게
+		
+		
+		
 		return "redirect:/member/main";
 	}
 	
@@ -78,13 +91,7 @@ public class MemberController {
 		return "redirect:/member/main";
 	}
 //--------------------------------------------------------------------------------------
-////	@PostMapping("/member/id")
-//	@RequestMapping(value = "/member/id",  method = RequestMethod.POST)
-//	@ResponseBody
-//	public void idCheck(Member member) {
-//		logger.info("/member/id");
-//		
-//	}
+
 	
 	
 	

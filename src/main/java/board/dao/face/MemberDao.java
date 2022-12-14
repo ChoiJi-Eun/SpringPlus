@@ -27,4 +27,13 @@ public interface MemberDao {
 	 */
 	public String selectNick(Member loginParam);
 
+	/**
+	 * id 중복 체크
+	 * 
+	 * @param member - 새로 가입할 id값을 DB와 비교하여 체크 
+	 * @return int
+	 */
+	public int idChk(Member member);
+	
+	
 }

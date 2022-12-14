@@ -31,8 +31,11 @@ public class MemberRegisterController {
 //	@PostMapping("/member/id")
 	@RequestMapping(value = "/member/id",  method = RequestMethod.POST)
 	@ResponseBody
-	public void idCheckProc(Member member) throws Exception {
+	public int idCheckProc(Member member) throws Exception {
 		logger.info("/member/id [POST]");
+		
+		int result = memberService.idChk(member);
+		return result;
 //		return "redirect:/member/join";
 	}	
 	

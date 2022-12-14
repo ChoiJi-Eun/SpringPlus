@@ -40,7 +40,13 @@ public class MemberServiceImpl implements MemberService {
 		logger.info("getNick() - memberService");
 		return memberDao.selectNick(loginParam);
 	}
-	
 
+	@Override
+	public int idChk(Member member) {
+		int result = memberDao.idChk(member);
+		return result;
+	}
+	
+	
 
 }

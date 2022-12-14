@@ -16,7 +16,7 @@ public interface MemberService {
 	 * 로그인하기
 	 * 
 	 * @param loginParam - 로그인한 유저의 정보
-	 * @return - t/f
+	 * @return - boolean t/f
 	 */
 	public boolean login(Member loginParam);
 
@@ -29,4 +29,11 @@ public interface MemberService {
 	public String getNick(Member loginParam); 
 	
 
+	/**
+	 * 아이디 중복 체크
+	 * 
+	 * @param member
+	 * @return int 0 or int 1
+	 */
+	public int idChk(Member member);
 }
