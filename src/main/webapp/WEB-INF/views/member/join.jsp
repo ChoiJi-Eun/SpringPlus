@@ -5,10 +5,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:import url="../layout/header.jsp" />
+
 <script type="text/javascript">
 $(document).ready(function() {			/* 페이지 이동 */
 	$("#btnCancel").click(function() {
 		$(location).attr("href", "/member/main")
+	})
+	$("#id_check").click(function() {
+		$(location).attr("href", "/member/id")
 	})
 	
 })
@@ -46,6 +50,35 @@ $(document).ready(function() {			/* 유효성 검증 */
 	})
 	$("#phone4").focus(function() {
 		$("#phonemsg").html('')
+	})
+
+	
+	//-----------------------------------
+	//아이디 중복검사
+	$('.id').focusout( function(){
+		console.log("id 중복검사 테스트");	
+		
+		var memberId = $('.id').val();		// .id에 입력되는 값
+		var data = {memberId : memberId}	// '컨트롤에 넘길 데이터 이름' : '데이터(.id에 입력되는 값)'
+		
+		$.ajax({
+			type : "post",
+			url : "/member/id",
+			data : data,
+// 			sucesss : function(result){
+// 				if(result == 0){
+// 					$("#idmsg").html('사용 불가한 아이디입니다.');
+// 					$("#idmsg").attr('color','red');
+// 				} else{
+// 					$("#idmsg").html('사용 가능한 아이디입니다.');
+// 					$("#idmsg").attr('color','green');
+// 				} 
+// 			},
+			error : function(){
+				alert("서버요청실패");
+			} 
+		}); // ajax 종료	
+	
 	})
 	
 })
@@ -92,11 +125,11 @@ function validate() {
 		return false
 	}
 
-	// 전화번호 입력값 검증2 [000-0000-0000]
+	// 전화번호 입력값 검증2 [000-0000-0000]  /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/
 // 	if( !/01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/.test( $("#phone4").val() )  ) {
 // 		$("#phonemsg").html("#phone4 전화번호는 01?-???(?)-???? 형식만 가능합니다")	
 // 		return false
-// 	} //  /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/
+// 	}  
 
 	
 	
@@ -174,7 +207,7 @@ function sample6_execDaumPostcode() {
 </script>
 <style type="text/css">
 #join {
-	margin-left: 200px; 
+	margin-left: 170px; 
 	font-size: 1.2em;
 }
 #join label { 
@@ -188,6 +221,7 @@ input {
 	margin-bottom: 7px;
 	width: 300px;
 }
+#btn { font-size: 1.2em;  }
 </style>
 
 <br><h4>회원 가입 페이지</h4>
@@ -197,13 +231,13 @@ input {
 <form action="<%=request.getContextPath() %>./join" method="post" onsubmit="return validate();">  
 
 	<label>아이디<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
-	<input type="text" id="id" name="id" required placeholder="&nbsp;4~10의 영문자, 숫자만 입력해주세요">
-<!-- 	<button type="button">중복검사</button> -->
+	<input type="text" class="id" id="id" name="id" required placeholder=" 4~10의 영문자, 숫자만 입력해주세요">
+	<button type="button" id="id_check">중복검사</button>
 	<span id="idmsg"></span><br>
 	
 	
 	<label>비밀번호<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
-	<input type="password" id="pw" name="pw" required placeholder="&nbsp;4~8의 영문자, 숫자만 입력해주세요">
+	<input type="password" id="pw" name="pw" required placeholder=" 4~8의 영문자, 숫자만 입력해주세요">
 	<span id="pwmsg"></span><br>
 	
 	
@@ -237,6 +271,7 @@ input {
 	</select>
 	-&nbsp;<input id="phone2" name="phone" style="width: 97px; height: 29.99px;">
 	-&nbsp;<input id="phone3" name="phone" style="width: 97px; height: 29.99px;">
+<!-- 	<button type="button">인증하기</button> -->
 	<span id="phonemsg"></span><br>
 
 <!-- <label>전화번호<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label> DB저장 됨 -->
@@ -265,8 +300,9 @@ input {
 	<label>이메일</label>
 	<input type="email" id="email" name="email" placeholder="example@gmail.com"><br><br>
 	
-	<button type="submit" id="submit">회원가입</button>&nbsp;&nbsp;&nbsp;
-	<button type="reset" id="btnCancel">취소</button>
+	<div id="btn">
+		<button type="submit" id="submit">회원가입</button>&nbsp;&nbsp;&nbsp;
+		<button type="reset" id="btnCancel">취소</button></div>
 </form>
 </div><!-- join end -->
 
