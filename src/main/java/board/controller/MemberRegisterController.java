@@ -21,12 +21,12 @@ public class MemberRegisterController {
 	//서비스 객체
 	@Autowired private MemberService memberService;
 	
-	@GetMapping("/member/id")
-	@ResponseBody
-	public void idCheck(Member member) {
-		logger.info("/member/id [GET]");
-//		return "redirect:/member/join";
-	}
+//	@GetMapping("/member/id")
+//	@ResponseBody
+//	public void idCheck(Member member) {
+//		logger.info("/member/id [GET]");
+////		return "redirect:/member/join";
+//	}
 	
 //	@PostMapping("/member/id")
 	@RequestMapping(value = "/member/id",  method = RequestMethod.POST)
