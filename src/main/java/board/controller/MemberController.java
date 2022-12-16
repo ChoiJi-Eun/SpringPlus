@@ -1,5 +1,8 @@
 package board.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -9,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import board.dto.Member;
 import board.service.face.MemberService;
@@ -26,6 +30,7 @@ public class MemberController {
 		logger.info("/member/main");
 	}
 	
+	
 	@GetMapping("/member/join")
 	public void join() {
 		logger.info("/member/join [GET]");
@@ -38,19 +43,10 @@ public class MemberController {
 		logger.info("{}", memberParam);
 		
 		memberService.join(memberParam);
-		
-		
-//		 요기에서 입력된 아이디가 존재한다면 -> 다시 시도
-//		 존재하지 않는다면 -> 그대로 진행하게
-//		int result = memberService.idChk(memberParam);
-//			if(result == 0) {
-//				return "/member/join";
-//			}
-		
-		
-		
+
 		return "redirect:/member/main";
 	}
+	
 	
 	@GetMapping("/member/login")
 	public void login() {
@@ -79,6 +75,7 @@ public class MemberController {
 		return "redirect:/member/main";
 	}
 	
+	
 	@RequestMapping("/member/logout")
 	public String logout(HttpSession session) {
 		logger.info("/member/logout");
@@ -87,7 +84,32 @@ public class MemberController {
 	}
 //--------------------------------------------------------------------------------------
 
+	@RequestMapping("/member/id")
+	@ResponseBody
+	public int idCheck1(Member member) {
+		logger.info("/member/id 접속");
+		
+		int result = memberService.idChk(member);
+		logger.info("result: {}", result);
 	
+		return result;
+	}	
+	
+	@RequestMapping("/member/id2")
+	@ResponseBody
+	public Map<Object, Object> idCheck2(Member member) {
+		logger.info("/member/id2 접속");
+		
+        int count = 0;
+        
+        Map<Object, Object> map = new HashMap<Object, Object>();
+ 
+        count = memberService.idChk(member);
+        logger.info("count: {}", count);
+        map.put("result", count);
+        
+        return map;
+	}
 	
 	
 }

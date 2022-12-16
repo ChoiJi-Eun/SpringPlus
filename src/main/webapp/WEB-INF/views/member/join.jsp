@@ -64,23 +64,22 @@ $(document).ready(function() {			/* 유효성 검증 */
 		
 		var id = $('#id').val();// .id에 입력되는 값
 // 		var data = {id : id}	// '컨트롤러에 넘길 데이터 이름' : '데이터(.id에 입력되는 값)'
+		console.log("입력한 id값 : " + id);
 		
 		$.ajax({
 			type : "post",
 			url : "/member/id",
 			data : {id : id},
 			dataType : "json",
-			sucesss : function(result){
+			success : function( result ){
 				
 				if(result == 1) { // 1=>이미있는아이디, 0=>없는아이디(사용가능)
 					$("#idmsg").html('사용 불가능한 아이디입니다. 다시 시도해주세요');
 					$("#idmsg").attr('color','red');
-					alert('사용 불가능한 아이디입니다. 다시 시도해주세요')
 					$("submit").attr("disabled", "disabled");
 				} else {
 					$("#idmsg").html('사용 가능한 아이디입니다.');
-					$("#idmsg").attr('color','green');
-					alert('사용 가능한 아이디입니다.')
+					$("#idmsg").attr('color','blue');
 					$("submit").removerAttr("disabled");
 				} 
 			},
@@ -108,7 +107,6 @@ function validate() {
 	//-----아이디 유효성 검증
 	// 아이디를 입력했는지 검증
 	if( $("#id").val() == '' ) {
-// 		alert("아이디를 입력해주세요!")
 		$("#idmsg").html("아이디를 입력해주세요!")
 		return false
 	}
