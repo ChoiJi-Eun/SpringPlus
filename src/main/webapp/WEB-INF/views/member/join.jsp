@@ -55,27 +55,30 @@ $(document).ready(function() {			/* 유효성 검증 */
 	
 	//-----------------------------------
 	//아이디 중복검사
-	$('.id').focusout( function(){
+	var id_check_btn = 0; //아이디 체크여부 확인 (아이디 중복일 경우 = 0 , 중복이 아닐경우 = 1 )
+	
+	$('#id_check_btn').click( function(){
 		console.log("id 중복검사 테스트");	
 		
-		var memberId = $('.id').val();		// .id에 입력되는 값
-		var data = {memberId : memberId}	// '컨트롤에 넘길 데이터 이름' : '데이터(.id에 입력되는 값)'
+		var id = $('.id').val();	// .id에 입력되는 값
+		var data = {id : id}	// '컨트롤러에 넘길 데이터 이름' : '데이터(.id에 입력되는 값)'
 		
 		$.ajax({
 			type : "post",
 			url : "/member/id",
 			data : data,
-// 			sucesss : function(result){
-// 				if(result == 0){
-// 					$("#idmsg").html('사용 불가한 아이디입니다.');
-// 					$("#idmsg").attr('color','red');
-// 				} else{
-// 					$("#idmsg").html('사용 가능한 아이디입니다.');
-// 					$("#idmsg").attr('color','green');
-// 				} 
-// 			},
+			dataType : "json",
+			sucesss : function(result){
+				if(result == 0) {
+					$("#idmsg").html('사용 불가능한 아이디입니다. 다시 시도해주세요');
+					$("#idmsg").attr('color','red');
+				} else {
+					$("#idmsg").html('사용 가능한 아이디입니다.');
+					$("#idmsg").attr('color','green');
+				} 
+			},
 			error : function(){
-				alert("서버요청실패");
+				alert("서버요청이실패하였습니다");
 			} 
 		}); // ajax 종료	
 	
@@ -131,7 +134,15 @@ function validate() {
 // 		return false
 // 	}  
 
-	
+// 	if(confirm("회원가입을 하시겠습니까?")){
+//         if(id_check_btn==0){
+//             alert('아이디 중복체크를 해주세요');
+//             return false;
+//         }else{
+// 	        alert("회원가입을 축하합니다");
+// 	        $("form").submit();
+//         }
+//     }	
 	
 	
 	//--------------------
@@ -232,7 +243,7 @@ input {
 
 	<label>아이디<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
 	<input type="text" class="id" id="id" name="id" required placeholder=" 4~10의 영문자, 숫자만 입력해주세요">
-	<button type="button" id="id_check">중복검사</button>
+	<button type="button" id="id_check_btn">중복검사</button>
 	<span id="idmsg"></span><br>
 	
 	

@@ -29,14 +29,20 @@ public class MemberRegisterController {
 //	}
 	
 //	@PostMapping("/member/id")
-	@RequestMapping(value = "/member/id",  method = RequestMethod.POST)
+//	@RequestMapping(value = "/member/id",  method = RequestMethod.POST)
+	@RequestMapping("/member/id")
+//	@GetMapping("/member/id")
 	@ResponseBody
-	public int idCheckProc(Member member) throws Exception {
-		logger.info("/member/id [POST]");
+	public int idCheckProc(Member member) {
+		logger.info("/member/id 접속");
 		
 		int result = memberService.idChk(member);
+		
+		if( member.getId() != null ) {
+			result = 1;
+			logger.info("result: {}", result);
+		}
 		return result;
-//		return "redirect:/member/join";
 	}	
 	
 	
