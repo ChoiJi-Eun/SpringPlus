@@ -56,6 +56,7 @@ public class MemberRegisterController {
 		logger.info("/member/id2 접속");
 		
         int count = 0;
+        
         Map<Object, Object> map = new HashMap<Object, Object>();
  
         count = memberService.idChk(member);

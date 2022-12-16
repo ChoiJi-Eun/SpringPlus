@@ -17,6 +17,7 @@ $(document).ready(function() {			/* 페이지 이동 */
 	
 })
 $(document).ready(function() {			/* 유효성 검증 */
+	
 	$("form").submit(function() {
 		console.log("<form> submit event")
 		
@@ -54,6 +55,7 @@ $(document).ready(function() {			/* 유효성 검증 */
 
 	
 	//-----------------------------------
+	
 	//아이디 중복검사
 	var id_check_btn = 0; //아이디 체크여부 확인 (아이디 중복일 경우 = 0 , 중복이 아닐경우 = 1 )
 	
@@ -85,6 +87,17 @@ $(document).ready(function() {			/* 유효성 검증 */
 		}); //ajax end
 	
 	}) //id 중복검사 end
+	
+// 	if(confirm("회원가입을 하시겠습니까?")){
+//  if(id_check_btn==0){
+//      alert('아이디 중복체크를 해주세요');
+//      return false;
+//  }else{
+//      alert("회원가입을 축하합니다");
+//// 	        $("form").submit();
+//  }
+//} //회원가입 버튼에 TYPE을 submit에서 button으로 바꿔주고 
+//	form 에 name="" id=""을 추가
 	
 })
 //input 데이터 유효성 검증하기
@@ -136,15 +149,7 @@ function validate() {
 // 		return false
 // 	}  
 
-// 	if(confirm("회원가입을 하시겠습니까?")){
-//         if(id_check_btn==0){
-//             alert('아이디 중복체크를 해주세요');
-//             return false;
-//         }else{
-// 	        alert("회원가입을 축하합니다");
-// 	        $("form").submit();
-//         }
-//     }	
+	
 	
 	
 	//--------------------
