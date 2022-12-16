@@ -36,4 +36,5 @@ public interface MemberService {
 	 * @return int 0 or int 1
 	 */
 	public int idChk(Member member);
+
 }

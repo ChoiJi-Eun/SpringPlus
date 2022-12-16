@@ -1,5 +1,8 @@
 package board.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +46,25 @@ public class MemberRegisterController {
 			logger.info("result: {}", result);
 		}
 		return result;
+		
+		
+	}	
+	
+	@RequestMapping("/member/id2")
+	@ResponseBody
+	public Map<Object, Object> idCheck2(Member member) {
+		logger.info("/member/id2 접속");
+		
+        int count = 0;
+        Map<Object, Object> map = new HashMap<Object, Object>();
+ 
+        count = memberService.idChk(member);
+        logger.info("count: {}", count);
+        map.put("result", count);
+ 
+        return map;
+		
+		
 	}	
 	
 	

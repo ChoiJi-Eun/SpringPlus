@@ -60,29 +60,31 @@ $(document).ready(function() {			/* 유효성 검증 */
 	$('#id_check_btn').click( function(){
 		console.log("id 중복검사 테스트");	
 		
-		var id = $('.id').val();	// .id에 입력되는 값
+		var id = $('.id').val();// .id에 입력되는 값
 		var data = {id : id}	// '컨트롤러에 넘길 데이터 이름' : '데이터(.id에 입력되는 값)'
 		
 		$.ajax({
 			type : "post",
-			url : "/member/id",
+			url : "/member/id2",
 			data : data,
 			dataType : "json",
 			sucesss : function(result){
 				if(result == 0) {
 					$("#idmsg").html('사용 불가능한 아이디입니다. 다시 시도해주세요');
 					$("#idmsg").attr('color','red');
+					alert('사용 불가능한 아이디입니다. 다시 시도해주세요')
 				} else {
 					$("#idmsg").html('사용 가능한 아이디입니다.');
 					$("#idmsg").attr('color','green');
+					alert('사용 가능한 아이디입니다.')
 				} 
 			},
 			error : function(){
-				alert("서버요청이실패하였습니다");
+				alert("서버요청이 실패하였습니다");
 			} 
-		}); // ajax 종료	
+		}); //ajax end
 	
-	})
+	}) //id 중복검사 end
 	
 })
 //input 데이터 유효성 검증하기
