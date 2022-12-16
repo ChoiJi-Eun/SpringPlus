@@ -21,7 +21,7 @@
 		WHERE id = #{id}
 	</select>
 <!-- 아이디 중복 체크 -->
-	<select id="idChk" resultType="int">
+	<select id="idChk" resultType="int" parameterType="Member">
 		SELECT count(*) FROM member
 		WHERE id = #{id}
 	</select>

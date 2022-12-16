@@ -9,8 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import board.dto.Member;
 import board.service.face.MemberService;
@@ -42,13 +40,12 @@ public class MemberController {
 		memberService.join(memberParam);
 		
 		
+//		 요기에서 입력된 아이디가 존재한다면 -> 다시 시도
+//		 존재하지 않는다면 -> 그대로 진행하게
 //		int result = memberService.idChk(memberParam);
-//		
-//			if(result == 1) {
+//			if(result == 0) {
 //				return "/member/join";
 //			}
-//			 요기에서~ 입력된 아이디가 존재한다면 -> 다시 시도
-//			 존재하지 않는다면 -> 그대로 진행하게
 		
 		
 		

@@ -57,28 +57,31 @@ $(document).ready(function() {			/* 유효성 검증 */
 	//-----------------------------------
 	
 	//아이디 중복검사
-	var id_check_btn = 0; //아이디 체크여부 확인 (아이디 중복일 경우 = 0 , 중복이 아닐경우 = 1 )
+	var id_check_btn = 0; //아이디 체크 여부 확인용 (아이디 중복일 경우 = 0 , 중복이 아닐경우 = 1 )
 	
 	$('#id_check_btn').click( function(){
 		console.log("id 중복검사 테스트");	
 		
-		var id = $('.id').val();// .id에 입력되는 값
-		var data = {id : id}	// '컨트롤러에 넘길 데이터 이름' : '데이터(.id에 입력되는 값)'
+		var id = $('#id').val();// .id에 입력되는 값
+// 		var data = {id : id}	// '컨트롤러에 넘길 데이터 이름' : '데이터(.id에 입력되는 값)'
 		
 		$.ajax({
 			type : "post",
-			url : "/member/id2",
-			data : data,
+			url : "/member/id",
+			data : {id : id},
 			dataType : "json",
 			sucesss : function(result){
-				if(result == 0) {
+				
+				if(result == 1) { // 1=>이미있는아이디, 0=>없는아이디(사용가능)
 					$("#idmsg").html('사용 불가능한 아이디입니다. 다시 시도해주세요');
 					$("#idmsg").attr('color','red');
 					alert('사용 불가능한 아이디입니다. 다시 시도해주세요')
+					$("submit").attr("disabled", "disabled");
 				} else {
 					$("#idmsg").html('사용 가능한 아이디입니다.');
 					$("#idmsg").attr('color','green');
 					alert('사용 가능한 아이디입니다.')
+					$("submit").removerAttr("disabled");
 				} 
 			},
 			error : function(){
