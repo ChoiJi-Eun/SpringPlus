@@ -18,7 +18,7 @@ $(document).ready(function() {			/* 페이지 이동 */
 })
 $(document).ready(function() {			/* 유효성 검증 */
 	
-	$("form").click(function() {
+	$("form").submit(function() {
 		console.log("<form> submit event")
 		
 // 		//유효성 검증 후 submit하기
@@ -26,15 +26,9 @@ $(document).ready(function() {			/* 유효성 검증 */
 // 			$(this).submit()
 // 		}
 
-		if(validateID()) {
-			
-		}
-		if(validatePW()) {
-			
-		}
-// 		validate();
+		validate();
 		
-		return false //submit 중단 시키기
+		return true //submit 실행 시키기
 		
 	})
 
@@ -61,10 +55,6 @@ $(document).ready(function() {			/* 유효성 검증 */
 		$("#phonemsg").html('')
 	})
 	//---------------------------------
-	
-// 	validateID();
-// 	validatePW();
-
 
 	
 	//-----------------------------------
@@ -83,16 +73,31 @@ $(document).ready(function() {			/* 유효성 검증 */
 //	form 에 name="" id=""을 추가
 	
 })
+function validate() {
+	if( !validateID( $("#id").val() ) ) { //id 유효성 검증 실패
+		return false //submit 중단
+	}
+	if(!validatePW()) {   //pw 유효성 검증 실패
+		return false //submit 중단
+	}	
+	if(!validatePhone()) {   //phone 유효성 검증 실패
+		return false //submit 중단
+	}	
+	
+	return true
+}
 //input 데이터 유효성 검증하기
-function validateID() {
+function validateID( id ) {
 		//-----아이디 유효성 검증
 		// 아이디를 입력했는지 검증
-		if( $("#id").val() == '' ) {
+// 		if( $("#id").val() == '' ) {
+		if( id == '' ) {
 			$("#idmsg").html("아이디를 입력해주세요!")
 // 			return false
 		}
 		// 아이디 입력값 검증
-		if( !/^[a-zA-Z0-9]{4,10}$/.test( $("#id").val() )  ) {
+// 		if( !/^[a-zA-Z0-9]{4,10}$/.test( $("#id").val() )  ) {
+		if( !/^[a-zA-Z0-9]{4,10}$/.test( id )  ) {
 			$("#idmsg").html("아이디는 4~10의 영문자, 숫자만 가능합니다.")	
 // 			return false
 		}
@@ -131,24 +136,32 @@ function validateID() {
 		}); //ajax end
 	
 	}) //id 중복검사 end
+	//-----------------------------
+	return true // id 유효성 검증 완료
 }	
-function validatePW() {	
+function validatePW( pw ) {	
 	//-----패스워드 유효성 검증
 	// 패스워드를 입력했는지 검증
-	if( $("#pw").val() == '' ) {
+	if(pw == '' ) {
 		$("#pwmsg").html("패스워드를 입력해주세요!")
 		return false
 	}
 	// 패스워드 입력값 검증
-	if( !/^[a-zA-Z0-9]{4,8}$/.test( $("#pw").val() )  ) {
+	if( !/^[a-zA-Z0-9]{4,8}$/.test( pw )  ) {
 		$("#pwmsg").html("패스워드는 4~8의 영문자, 숫자만 가능합니다.")	
 		return false
 	}
 	// 패스워드체크 입력값과 패스워드 입력값 같은지 검증
-	if(  $("#pw").val() != $("#pw_check").val()   ) {
+	if(  pw != $("#pw_check").val()   ) {
 		$("#pw_check_msg").html("패스워드가 일치하지 않습니다. 다시 시도해주세요")	
 		return false
 	}
+	
+	
+	//--------------------
+	return true // pw 유효성 검증 완료
+}
+function validatePhone( phone ) {
 	
 	//-----전화번호 유효성 검증	
 	// 전화번호 입력값 검증1 [000]-[0000]-[0000]
@@ -167,13 +180,9 @@ function validatePW() {
 // 		return false
 // 	}  
 
-	
-	
-	
 	//--------------------
-	return true
+	return true // phone 유효성 검증 완료	
 }
-
 </script>
 
 <!-- 다음카카오 주소 API, https://postcode.map.daum.net/guide -->
