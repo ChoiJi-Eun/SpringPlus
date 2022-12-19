@@ -57,10 +57,10 @@ $(document).ready(function() {			/* 유효성 검증 */
 	//---------------------------------
 
 	
-	//-----------------------------------
 	
 
 	
+	//-----------------------------------
 // 	if(confirm("회원가입을 하시겠습니까?")){
 //  if(id_check_btn==0){
 //      alert('아이디 중복체크를 해주세요');
@@ -77,10 +77,13 @@ function validate() {
 	if( !validateID( $("#id").val() ) ) { //id 유효성 검증 실패
 		return false //submit 중단
 	}
-	if(!validatePW()) {   //pw 유효성 검증 실패
+	if(!validatePW( $("#pw").val() )) {   //pw 유효성 검증 실패
 		return false //submit 중단
 	}	
-	if(!validatePhone()) {   //phone 유효성 검증 실패
+	if(!validatePhone(  )) {   //phone 유효성 검증 실패
+		return false //submit 중단
+	}	
+	if(!validateNick( $("#nick").val() )) {   //nick 유효성 검증 실패
 		return false //submit 중단
 	}	
 	
@@ -161,8 +164,7 @@ function validatePW( pw ) {
 	//--------------------
 	return true // pw 유효성 검증 완료
 }
-function validatePhone( phone ) {
-	
+function validatePhone(  ) {
 	//-----전화번호 유효성 검증	
 	// 전화번호 입력값 검증1 [000]-[0000]-[0000]
 	if( !/^[0-9]{4}$/.test( $("#phone2").val() )  ) {
@@ -183,6 +185,16 @@ function validatePhone( phone ) {
 	//--------------------
 	return true // phone 유효성 검증 완료	
 }
+function validateNick( nick ) {
+	console.log("nick checkbtn")
+	//-----닉네임 유효성 검증	
+	if( nick == '' ) {
+		$("#nickmsg").html("닉네임을 입력해주세요!")
+		return false	
+	}
+	
+}
+
 </script>
 
 <!-- 다음카카오 주소 API, https://postcode.map.daum.net/guide -->
@@ -277,7 +289,7 @@ input {
 
 	<label>아이디<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
 	<input type="text" class="id" id="id" name="id" required placeholder=" 4~10의 영문자, 숫자만 입력해주세요">
-	<button type="button" id="id_check_btn">중복검사</button>
+	<button type="button" id="id_check_btn" onclick="validateID(id)">중복검사</button> 
 	<span id="idmsg"></span><br>
 	
 	
@@ -293,6 +305,7 @@ input {
 	
 	<label>닉네임<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
 	<input type="text" id="nick" name="nick" required>
+	<button type="button" id="nick_check_btn" onclick="validateNick()">중복검사</button> 
 	<span id="nickmsg"></span><br>
 	
 	

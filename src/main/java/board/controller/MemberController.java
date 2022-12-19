@@ -83,7 +83,6 @@ public class MemberController {
 		return "redirect:/member/main";
 	}
 //--------------------------------------------------------------------------------------
-
 	@RequestMapping("/member/id")
 	@ResponseBody
 	public int idCheck1(Member member) {
@@ -110,6 +109,15 @@ public class MemberController {
         
         return map;
 	}
+	@RequestMapping("/member/nick")
+	@ResponseBody
+	public int nickCheck1(Member member) {
+		logger.info("/member/nick 접속");
+		
+		int result = memberService.nickChk(member);
+		logger.info("result: {}", result);
 	
+		return result;
+	}	
 	
 }
