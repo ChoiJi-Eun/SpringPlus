@@ -25,6 +25,11 @@
 		SELECT count(*) FROM member
 		WHERE id = #{id}
 	</select>
+<!-- 닉네임 중복 체크 -->
+	<select id="nickChk" resultType="int" parameterType="Member">
+		SELECT count(*) FROM member
+		WHERE id = #{id}
+	</select>
 
 </mapper>    
 

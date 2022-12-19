@@ -34,6 +34,14 @@ public interface MemberDao {
 	 * @return int
 	 */
 	public int idChk(Member member);
+
+	/**
+	 * nick 중복 체크
+	 * 
+	 * @param member - 새로 가입할 nick값을 DB와 비교하여 체크 
+	 * @return int
+	 */
+	public int nickChk(Member member);
 	
 	
 }

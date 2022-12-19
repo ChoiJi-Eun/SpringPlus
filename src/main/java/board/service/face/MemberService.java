@@ -37,4 +37,12 @@ public interface MemberService {
 	 */
 	public int idChk(Member member);
 
+	/**
+	 * 닉네임 중복 체크
+	 * 
+	 * @param member
+	 * @return int 0 or int 1
+	 */
+	public int nickChk(Member member);
+
 }

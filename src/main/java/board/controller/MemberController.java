@@ -93,7 +93,7 @@ public class MemberController {
 	
 		return result;
 	}	
-	
+	//원래는 Map<Object, Object> 로 만들어야하는데 지금은 굳이 필요없는 코드
 	@RequestMapping("/member/id2")
 	@ResponseBody
 	public Map<Object, Object> idCheck2(Member member) {
