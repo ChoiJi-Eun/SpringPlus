@@ -18,16 +18,24 @@ $(document).ready(function() {			/* 페이지 이동 */
 })
 $(document).ready(function() {			/* 유효성 검증 */
 	
-	$("form").submit(function() {
+	$("form").click(function() {
 		console.log("<form> submit event")
 		
 // 		//유효성 검증 후 submit하기
 // 		if( validate() ) {
 // 			$(this).submit()
 // 		}
-// 		return false //submit 중단 시키기
 
-		return validate();
+		if(validateID()) {
+			
+		}
+		if(validatePW()) {
+			
+		}
+// 		validate();
+		
+		return false //submit 중단 시키기
+		
 	})
 
 	//아이디 입력을 시도할 때 아이디 메시지 삭제하기
@@ -52,16 +60,50 @@ $(document).ready(function() {			/* 유효성 검증 */
 	$("#phone4").focus(function() {
 		$("#phonemsg").html('')
 	})
+	//---------------------------------
+	
+// 	validateID();
+// 	validatePW();
+
 
 	
 	//-----------------------------------
 	
+
+	
+// 	if(confirm("회원가입을 하시겠습니까?")){
+//  if(id_check_btn==0){
+//      alert('아이디 중복체크를 해주세요');
+//      return false;
+//  }else{
+//      alert("회원가입을 축하합니다");
+//// 	        $("form").submit();
+//  }
+//} //회원가입 버튼에 TYPE을 submit에서 button으로 바꿔주고 
+//	form 에 name="" id=""을 추가
+	
+})
+//input 데이터 유효성 검증하기
+function validateID() {
+		//-----아이디 유효성 검증
+		// 아이디를 입력했는지 검증
+		if( $("#id").val() == '' ) {
+			$("#idmsg").html("아이디를 입력해주세요!")
+// 			return false
+		}
+		// 아이디 입력값 검증
+		if( !/^[a-zA-Z0-9]{4,10}$/.test( $("#id").val() )  ) {
+			$("#idmsg").html("아이디는 4~10의 영문자, 숫자만 가능합니다.")	
+// 			return false
+		}
+
 	//아이디 중복검사
 	var id_check_btn = 0; //아이디 체크 여부 확인용 (아이디 중복일 경우 = 0 , 중복이 아닐경우 = 1 )
 	
 	$('#id_check_btn').click( function(){
-		console.log("id 중복검사 테스트");	
 		
+		//------------------------------
+		console.log("id 중복검사 테스트");	
 		var id = $('#id').val();// .id에 입력되는 값
 // 		var data = {id : id}	// '컨트롤러에 넘길 데이터 이름' : '데이터(.id에 입력되는 값)'
 		console.log("입력한 id값 : " + id);
@@ -89,33 +131,8 @@ $(document).ready(function() {			/* 유효성 검증 */
 		}); //ajax end
 	
 	}) //id 중복검사 end
-	
-// 	if(confirm("회원가입을 하시겠습니까?")){
-//  if(id_check_btn==0){
-//      alert('아이디 중복체크를 해주세요');
-//      return false;
-//  }else{
-//      alert("회원가입을 축하합니다");
-//// 	        $("form").submit();
-//  }
-//} //회원가입 버튼에 TYPE을 submit에서 button으로 바꿔주고 
-//	form 에 name="" id=""을 추가
-	
-})
-//input 데이터 유효성 검증하기
-function validate() {
-	//-----아이디 유효성 검증
-	// 아이디를 입력했는지 검증
-	if( $("#id").val() == '' ) {
-		$("#idmsg").html("아이디를 입력해주세요!")
-		return false
-	}
-	// 아이디 입력값 검증
-	if( !/^[a-zA-Z0-9]{4,10}$/.test( $("#id").val() )  ) {
-		$("#idmsg").html("아이디는 4~10의 영문자, 숫자만 가능합니다.")	
-		return false
-	}
-	
+}	
+function validatePW() {	
 	//-----패스워드 유효성 검증
 	// 패스워드를 입력했는지 검증
 	if( $("#pw").val() == '' ) {
