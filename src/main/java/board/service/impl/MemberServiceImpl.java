@@ -52,6 +52,11 @@ public class MemberServiceImpl implements MemberService {
 		int result = memberDao.nickChk(member);
 		return result;
 	}
+
+	@Override
+	public Member getUserinfo(Member member) {
+		return memberDao.selectMember(member);
+	}
 	
 	
 

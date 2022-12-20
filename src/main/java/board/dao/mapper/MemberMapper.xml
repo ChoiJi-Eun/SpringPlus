@@ -31,6 +31,13 @@
 		WHERE nick = #{nick}
 	</select>
 
+
+	<select id="selectMember" resultType="Member" parameterType="Member">
+		SELECT id, pw, nick, email, name, address, gender, phone
+		FROM member
+		WHERE id = #{id}
+	
+	</select>
 </mapper>    
 
 

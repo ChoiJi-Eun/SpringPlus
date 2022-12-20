@@ -42,6 +42,13 @@ public interface MemberDao {
 	 * @return int
 	 */
 	public int nickChk(Member member);
+
+	/**
+	 * 로그인한 회원의 정보 조회하기
+	 * @param member - 회원의 정보들
+	 * @return member
+	 */
+	public Member selectMember(Member member);
 	
 	
 }

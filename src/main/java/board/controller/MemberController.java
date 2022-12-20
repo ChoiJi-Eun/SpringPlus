@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -122,11 +123,26 @@ public class MemberController {
 	//------------------------------------------------------------
 	
 	@RequestMapping("/member/mypage")
-	public void mypage(Member member, HttpSession session) {
+	public void mypage(Member member, HttpSession session, Model model) {
 		logger.info("/member/mypage");
-		logger.info("member: {}", member);
-		logger.info("session: {}", session);
 		
+		Member data = memberService.getUserinfo(member);
+		
+		data.setPw( (String) session.getAttribute("pw") );
+		data.setEmail( (String) session.getAttribute("email") );
+		data.setName( (String) session.getAttribute("name"));
+		data.setAddr( (String) session.getAttribute("addr") );
+		data.setGender( (String) session.getAttribute("gender") );
+		data.setEmail( (String) session.getAttribute("phone") );
+		
+//		String i = data.getName();
+//		logger.info("i: {}", i);
+		
+		logger.info("pw: {}", data.getPw());
+		logger.info("member: {}", member);
+		logger.info("data: {}", data);
+		
+//		model.addAttribute("data", data);
 		
 	}
 }

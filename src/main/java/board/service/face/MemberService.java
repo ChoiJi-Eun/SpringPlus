@@ -45,4 +45,12 @@ public interface MemberService {
 	 */
 	public int nickChk(Member member);
 
+	/**
+	 * 로그인한 회원의 정보 가져오기
+	 * 
+	 * @param member - 회원 정보
+	 * @return member
+	 */
+	public Member getUserinfo(Member member);
+
 }
