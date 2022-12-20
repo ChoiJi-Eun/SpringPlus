@@ -420,9 +420,9 @@ input {
 	
 	<div id="btn">
 		<button type="submit" id="submit">회원가입</button>&nbsp;&nbsp;&nbsp;
-		<button type="reset" id="btnCancel">취소</button></div>
+		<button type="reset" id="btnCancel">취소</button></div><!-- #btn end -->
 </form>
-</div><!-- join end -->
+</div><!-- #join end -->
 
 
 <div class="clearfix" style=" text-align: center; height: 100px;" ></div>

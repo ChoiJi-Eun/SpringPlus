@@ -119,5 +119,14 @@ public class MemberController {
 	
 		return result;
 	}	
+	//------------------------------------------------------------
 	
+	@RequestMapping("/member/mypage")
+	public void mypage(Member member, HttpSession session) {
+		logger.info("/member/mypage");
+		logger.info("member: {}", member);
+		logger.info("session: {}", session);
+		
+		
+	}
 }

@@ -20,7 +20,8 @@
 <%-- 로그인 상태 --%>
 <c:if test="${not empty isLogin }">
 <a href="<%=request.getContextPath() %>./logout"><button style="font-size: 1.5em;">로그아웃</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="<%=request.getContextPath() %>../board/list"><button style="font-size: 1.5em;">게시판</button></a><br>
+<a href="<%=request.getContextPath() %>../board/list"><button style="font-size: 1.5em;">게시판</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="<%=request.getContextPath() %>../member/mypage"><button style="font-size: 1.5em;">마이페이지</button></a><br>
 </c:if>
 </div>
 
