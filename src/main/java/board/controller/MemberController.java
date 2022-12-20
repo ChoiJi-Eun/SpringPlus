@@ -128,17 +128,17 @@ public class MemberController {
 		
 		Member data = memberService.getUserinfo(member);
 		
-		data.setPw( (String) session.getAttribute("pw") );
-		data.setEmail( (String) session.getAttribute("email") );
-		data.setName( (String) session.getAttribute("name"));
-		data.setAddr( (String) session.getAttribute("addr") );
-		data.setGender( (String) session.getAttribute("gender") );
-		data.setEmail( (String) session.getAttribute("phone") );
+//		data.setPw( (String) session.getAttribute("pw") );
+//		data.setEmail( (String) session.getAttribute("email") );
+//		data.setName( (String) session.getAttribute("name"));
+//		data.setAddr( (String) session.getAttribute("addr") );
+//		data.setGender( (String) session.getAttribute("gender") );
+//		data.setEmail( (String) session.getAttribute("phone") );
 		
 //		String i = data.getName();
 //		logger.info("i: {}", i);
 		
-		logger.info("pw: {}", data.getPw());
+		logger.info("pw", data.getPw());
 		logger.info("member: {}", member);
 		logger.info("data: {}", data);
 		
