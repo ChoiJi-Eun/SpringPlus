@@ -86,7 +86,16 @@ function validate() {
 	if(!validateNick( $("#nick").val() )) {   //nick 유효성 검증 실패
 		return false //submit 중단
 	}	
-	
+	//아이디 중복검사 유효성 검증	
+	if( $('#id_check_btn') == 0 ) {
+		$("#idmsg").html("아이디 중복검사를 해주세요!")
+		return false //submit 중단
+	}
+	//닉네임 중복검사 유효성 검증	
+	if( $('#nick_check_btn') == 0 ) {
+		$("#nickmsg").html("닉네임 중복검사를 해주세요!")
+		return false	
+	}
 	return true
 }
 //input 데이터 유효성 검증하기
@@ -138,10 +147,7 @@ function validateID( id ) {
 			} 
 		}); //ajax end
 		
-		//아이디 중복검사 유효성 검증	
-		if( $('#id_check_btn') == 0 ) {
-			$("#idmsg").html("아이디 중복검사를 해주세요!")
-		}
+
 	}) //id 중복검사 end
 	//-----------------------------
 	return true // id 유효성 검증 완료
@@ -194,8 +200,8 @@ function validateNick( nick ) {
 		return false	
 	}
 	// 닉네임 입력값 검증
-	if( !/^[a-zA-Z0-9]{4,10}$/.test( id )  ) {
-		$("#idmsg").html("아이디는 4~10의 영문자, 숫자만 가능합니다.")	
+	if( !/^[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9]{3,10}$/.test( nick )  ) {
+		$("#nickmsg").html("닉네임은 3~10의 한글, 영문자, 숫자만 가능합니다.")	
 // 		return false
 	}
 	//닉네임 중복검사
@@ -231,11 +237,6 @@ function validateNick( nick ) {
 		}); //ajax end
 	}) //nick 중복검사 end
 	
-	//-----닉네임 중복검사 유효성 검증	
-	if( $('#nick_check_btn') == 0 ) {
-		$("#nickmsg").html("닉네임 중복검사를 해주세요!")
-		return false	
-	}
 	//--------------------
 	return true // nick 유효성 검증 완료	
 }
