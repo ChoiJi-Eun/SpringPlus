@@ -91,19 +91,19 @@ function validate() {
 }
 //input 데이터 유효성 검증하기
 function validateID( id ) {
-		//-----아이디 유효성 검증
-		// 아이디를 입력했는지 검증
-// 		if( $("#id").val() == '' ) {
-		if( id == '' ) {
-			$("#idmsg").html("아이디를 입력해주세요!")
-// 			return false
-		}
-		// 아이디 입력값 검증
-// 		if( !/^[a-zA-Z0-9]{4,10}$/.test( $("#id").val() )  ) {
-		if( !/^[a-zA-Z0-9]{4,10}$/.test( id )  ) {
-			$("#idmsg").html("아이디는 4~10의 영문자, 숫자만 가능합니다.")	
-// 			return false
-		}
+	//-----아이디 유효성 검증
+	// 아이디를 입력했는지 검증
+// 	if( $("#id").val() == '' ) {
+	if( id == '' ) {
+		$("#idmsg").html("아이디를 입력해주세요!")
+// 		return false
+	}
+	// 아이디 입력값 검증
+// 	if( !/^[a-zA-Z0-9]{4,10}$/.test( $("#id").val() )  ) {
+	if( !/^[a-zA-Z0-9]{4,10}$/.test( id )  ) {
+		$("#idmsg").html("아이디는 4~10의 영문자, 숫자만 가능합니다.")	
+// 		return false
+	}
 
 	//아이디 중복검사
 	var id_check_btn = 0; //아이디 체크 여부 확인용 (아이디 중복일 경우 = 0 , 중복이 아닐경우 = 1 )
@@ -137,7 +137,11 @@ function validateID( id ) {
 				alert("서버요청이 실패하였습니다");
 			} 
 		}); //ajax end
-	
+		
+		//아이디 중복검사 유효성 검증	
+		if( $('#id_check_btn') == 0 ) {
+			$("#idmsg").html("아이디 중복검사를 해주세요!")
+		}
 	}) //id 중복검사 end
 	//-----------------------------
 	return true // id 유효성 검증 완료
@@ -159,8 +163,6 @@ function validatePW( pw ) {
 		$("#pw_check_msg").html("패스워드가 일치하지 않습니다. 다시 시도해주세요")	
 		return false
 	}
-	
-	
 	//--------------------
 	return true // pw 유효성 검증 완료
 }
@@ -175,24 +177,67 @@ function validatePhone(  ) {
 		$("#phonemsg").html("#phone3 전화번호는 각각 숫자 4자리만 가능합니다")	
 		return false
 	}
-
 	// 전화번호 입력값 검증2 [000-0000-0000]  /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/
 // 	if( !/01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/.test( $("#phone4").val() )  ) {
 // 		$("#phonemsg").html("#phone4 전화번호는 01?-???(?)-???? 형식만 가능합니다")	
 // 		return false
 // 	}  
-
 	//--------------------
 	return true // phone 유효성 검증 완료	
 }
 function validateNick( nick ) {
 	console.log("nick checkbtn")
 	//-----닉네임 유효성 검증	
+	//닉네임  입력값 검증
 	if( nick == '' ) {
 		$("#nickmsg").html("닉네임을 입력해주세요!")
 		return false	
 	}
+	// 닉네임 입력값 검증
+	if( !/^[a-zA-Z0-9]{4,10}$/.test( id )  ) {
+		$("#idmsg").html("아이디는 4~10의 영문자, 숫자만 가능합니다.")	
+// 		return false
+	}
+	//닉네임 중복검사
+	var nick_check_btn = 0; //아이디 체크 여부 확인용 (닉네임 중복일 경우 = 0 , 중복이 아닐경우 = 1 )
 	
+	$('#nick_check_btn').click( function(){
+		
+		//------------------------------
+		console.log("nick 중복검사 테스트");	
+		var nick = $('#nick').val();// nick에 입력되는 값
+		console.log("입력한 nick값 : " + nick);
+		
+		$.ajax({
+			type : "post",
+			url : "/member/nick",
+			data : {nick : nick},
+			dataType : "json",
+			success : function( result ){
+				
+				if(result == 1) { // 1=>이미있는아이디, 0=>없는아이디(사용가능)
+					$("#nickmsg").html('사용 불가능한 닉네임 입니다. 다시 시도해주세요');
+// 					$("#nickmsg").attr('color','red');
+					$("submit").attr("disabled", "disabled");
+				} else {
+					$("#nickmsg").html('사용 가능한 닉네임 입니다.');
+					$("#nickmsg").attr('color','blue');
+					$("submit").removerAttr("disabled");
+				} 
+			},
+			error : function(){
+				alert("서버요청이 실패하였습니다");
+			} 
+		}); //ajax end
+	}) //nick 중복검사 end
+	
+	//-----닉네임 중복검사 유효성 검증	
+	if( $('#nick_check_btn') == 0 ) {
+		$("#nickmsg").html("닉네임 중복검사를 해주세요!")
+		return false	
+	}
+	//--------------------
+	return true // nick 유효성 검증 완료	
 }
 
 </script>
@@ -305,7 +350,7 @@ input {
 	
 	<label>닉네임<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
 	<input type="text" id="nick" name="nick" required>
-	<button type="button" id="nick_check_btn" onclick="validateNick()">중복검사</button> 
+	<button type="button" id="nick_check_btn" onclick="validateNick(nick)">중복검사</button> 
 	<span id="nickmsg"></span><br>
 	
 	
