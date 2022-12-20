@@ -54,24 +54,15 @@ $(document).ready(function() {			/* 유효성 검증 */
 	$("#phone4").focus(function() {
 		$("#phonemsg").html('')
 	})
+	$("#nick").focus(function() {
+		$("#nickmsg").html('')
+	})
 	//---------------------------------
 
 	
 	
 
-	
-	//-----------------------------------
-// 	if(confirm("회원가입을 하시겠습니까?")){
-//  if(id_check_btn==0){
-//      alert('아이디 중복체크를 해주세요');
-//      return false;
-//  }else{
-//      alert("회원가입을 축하합니다");
-//// 	        $("form").submit();
-//  }
-//} //회원가입 버튼에 TYPE을 submit에서 button으로 바꿔주고 
-//	form 에 name="" id=""을 추가
-	
+
 })
 function validate() {
 	if( !validateID( $("#id").val() ) ) { //id 유효성 검증 실패
@@ -96,6 +87,20 @@ function validate() {
 		$("#nickmsg").html("닉네임 중복검사를 해주세요!")
 		return false	
 	}
+	
+	//-----------------------------------
+	if(confirm("회원가입을 하시겠습니까?")){
+		if(id_check_btn==0 || nick_check_btn==0){
+	     	alert('아이디와 닉네임 중복체크를 해주세요');
+	     	return false;
+	 } else {
+	     alert("회원가입을 축하합니다");
+	// 	        $("form").submit();
+	 }
+//} //회원가입 버튼에 TYPE을 submit에서 button으로 바꿔주고 
+//	form 에 name="" id=""을 추가
+	
+	//-----------------------------------
 	return true
 }
 //input 데이터 유효성 검증하기
@@ -109,10 +114,10 @@ function validateID( id ) {
 	}
 	// 아이디 입력값 검증
 // 	if( !/^[a-zA-Z0-9]{4,10}$/.test( $("#id").val() )  ) {
-	if( !/^[a-zA-Z0-9]{4,10}$/.test( id )  ) {
-		$("#idmsg").html("아이디는 4~10의 영문자, 숫자만 가능합니다.")	
-// 		return false
-	}
+// 	if( !/^[a-zA-Z0-9]{4,10}$/.test( id )  ) {
+// 		$("#idmsg").html("아이디는 4~10의 영문자, 숫자만 가능합니다.")	
+// // 		return false
+// 	}
 
 	//아이디 중복검사
 	var id_check_btn = 0; //아이디 체크 여부 확인용 (아이디 중복일 경우 = 0 , 중복이 아닐경우 = 1 )
@@ -132,11 +137,15 @@ function validateID( id ) {
 			dataType : "json",
 			success : function( result ){
 				
-				if(result == 1) { // 1=>이미있는아이디, 0=>없는아이디(사용가능)
+				if(result > 0) { // 1=>이미있는아이디, 0=>없는아이디(사용가능)
 					$("#idmsg").html('사용 불가능한 아이디입니다. 다시 시도해주세요');
 					$("#idmsg").attr('color','red');
 					$("submit").attr("disabled", "disabled");
 				} else {
+					if( !/^[a-zA-Z0-9]{4,10}$/.test( id )  ) {
+						$("#idmsg").html("아이디는 4~10의 영문자, 숫자만 가능합니다.")	
+						return false
+					}
 					$("#idmsg").html('사용 가능한 아이디입니다.');
 					$("#idmsg").attr('color','blue');
 					$("submit").removerAttr("disabled");
@@ -167,7 +176,7 @@ function validatePW( pw ) {
 	// 패스워드체크 입력값과 패스워드 입력값 같은지 검증
 	if(  pw != $("#pw_check").val()   ) {
 		$("#pw_check_msg").html("패스워드가 일치하지 않습니다. 다시 시도해주세요")	
-		return false
+// 		return false
 	}
 	//--------------------
 	return true // pw 유효성 검증 완료
@@ -197,13 +206,13 @@ function validateNick( nick ) {
 	//닉네임  입력값 검증
 	if( nick == '' ) {
 		$("#nickmsg").html("닉네임을 입력해주세요!")
-		return false	
+// 		return false	
 	}
 	// 닉네임 입력값 검증
-	if( !/^[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9]{3,10}$/.test( nick )  ) {
-		$("#nickmsg").html("닉네임은 3~10의 한글, 영문자, 숫자만 가능합니다.")	
+// 	if( !/^[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9]{3,10}$/.test( nick )  ) {
+// 		$("#nickmsg").html("닉네임은 3~10의 모든 문자가 가능합니다.")	
 // 		return false
-	}
+// 	}
 	//닉네임 중복검사
 	var nick_check_btn = 0; //아이디 체크 여부 확인용 (닉네임 중복일 경우 = 0 , 중복이 아닐경우 = 1 )
 	
@@ -221,11 +230,15 @@ function validateNick( nick ) {
 			dataType : "json",
 			success : function( result ){
 				
-				if(result == 1) { // 1=>이미있는아이디, 0=>없는아이디(사용가능)
+				if(result > 0) { // 1이상=>이미있는아이디, 0=>없는아이디(사용가능)
 					$("#nickmsg").html('사용 불가능한 닉네임 입니다. 다시 시도해주세요');
-// 					$("#nickmsg").attr('color','red');
+					$("#nickmsg").attr('color','red');
 					$("submit").attr("disabled", "disabled");
 				} else {
+					if( !/^[가-힣a-zA-Z0-9]{3,10}$/.test( nick )  ) {
+						$("#nickmsg").html("닉네임은 3~10의 모든 문자가 가능합니다.(특수문자 제외)")	
+						return false
+					}
 					$("#nickmsg").html('사용 가능한 닉네임 입니다.');
 					$("#nickmsg").attr('color','blue');
 					$("submit").removerAttr("disabled");
@@ -319,7 +332,8 @@ function sample6_execDaumPostcode() {
 }
 #submit { margin-left: 130px; }
 img { width: 15px; height: 15px; margin-bottom: 7px; }
-span { margin-left: 10px; font-weight: bolder; color: red;  }
+span { margin-left: 10px; font-weight: bolder;   }
+[id*="msg"] { color: red;  }   
 input {
 	margin-bottom: 7px;
 	width: 300px;
@@ -350,7 +364,7 @@ input {
 	
 	
 	<label>닉네임<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
-	<input type="text" id="nick" name="nick" required>
+	<input type="text" id="nick" name="nick" required placeholder=" 3~10의 모든 문자를 입력해주세요">
 	<button type="button" id="nick_check_btn" onclick="validateNick(nick)">중복검사</button> 
 	<span id="nickmsg"></span><br>
 	
