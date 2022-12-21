@@ -132,14 +132,14 @@ public class MemberController {
 	public void mypage(Member member, HttpSession session, Model model) {
 		logger.info("/member/mypage");
 		
-//		String id = (String) session.getAttribute("id");
-//		logger.info("String id:{}", id);
+		String id = (String) session.getAttribute("id");
+		logger.info("String id:{}", id);
 		
-		member = (Member) session.getAttribute("member");
-		logger.info("Member member1:{}", member);
+//		member = (Member) session.getAttribute("member");
+//		logger.info("Member member1:{}", member);
 		
 		model.addAttribute("m", memberService.getUserinfo(member));
-//		logger.info("String id2:{}", id);
+		logger.info("String id2:{}", id);
 		logger.info("Member member2:{}", member);
 //		logger.info("Member Name:{}", member.getName());
 
