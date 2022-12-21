@@ -73,12 +73,14 @@ $(document).ready(function() {			/* 페이지 이동 */
 	<label>아이디<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
 	<input type="text" class="id" id="id" name="id" required value="${id }"><br>
 	
+	
 	<div class="input password">
-	<div class="pass">
-	<label>비밀번호<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
-	<input type="password" id="pw" name="pw" required value="${pw }">
-	<img alt="eyes" src="../resources/eye-solid.svg" class="fa fa-eye fa-lg"><br>
-	</div></div>
+		<div class="pass">
+			<label>비밀번호<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
+			<input type="password" id="pw" name="pw" required value="${pw }">
+			<img alt="eyes" src="../resources/eye-solid.svg" class="fa fa-eye fa-lg"><br>
+		</div>
+	</div>
 	
 
 	<label>닉네임<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
@@ -86,10 +88,10 @@ $(document).ready(function() {			/* 페이지 이동 */
 	
 	
 	<label>이름<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
-	<input type="text" id="name" name="name" required value="${member.name }"><br>
+	<input type="text" id="name" name="name" required value="${name }"><br>
 	
 	<label>성별</label>
-	<input type="text" id="gender" name="gender" value="${gender }" required ><br>
+	<input type="text" id="gender" name="gender" value="${m.gender }" required ><br>
 <!-- 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 <!-- 	<input type="radio" name="gender" value="woman" required style="width: 50px; margin: 0px -20px -20px;">&nbsp;여자<br> -->
 	

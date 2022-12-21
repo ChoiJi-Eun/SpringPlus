@@ -55,6 +55,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public Member getUserinfo(Member member) {
+		logger.info("ser.memberInfo- {}", member);
 		return memberDao.selectMember(member);
 	}
 	

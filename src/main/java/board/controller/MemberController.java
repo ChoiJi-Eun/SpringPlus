@@ -68,7 +68,7 @@ public class MemberController {
 			session.setAttribute("isLogin", isLogin);
 			session.setAttribute("id", loginParam.getId()); 
 			session.setAttribute("nick", memberService.getNick(loginParam));
-//			session.setAttribute("pw", loginParam.getPw()); 
+			session.setAttribute("pw", loginParam.getPw()); 
 			session.setAttribute("name", loginParam.getName()); 
 			session.setAttribute("gender", loginParam.getGender()); 
 			session.setAttribute("phone", loginParam.getPhone()); 
@@ -132,30 +132,17 @@ public class MemberController {
 	public void mypage(Member member, HttpSession session, Model model) {
 		logger.info("/member/mypage");
 		
-		String id = (String) session.getAttribute("id");
-		logger.info("String id:{}", id);
+//		String id = (String) session.getAttribute("id");
+//		logger.info("String id:{}", id);
 		
-		Member data = memberService.getUserinfo(member);
-		model.addAttribute("member", data);
-		logger.info("Member data:{}", data);
+		member = (Member) session.getAttribute("member");
+		logger.info("Member member1:{}", member);
+		
+		model.addAttribute("m", memberService.getUserinfo(member));
+//		logger.info("String id2:{}", id);
+		logger.info("Member member2:{}", member);
+//		logger.info("Member Name:{}", member.getName());
 
-//		member.setId(member.getId());
-		
-//		data.setPw( (String) session.getAttribute("pw") );
-//		data.setEmail( (String) session.getAttribute("email") );
-//		data.setName( (String) session.getAttribute("name"));
-//		data.setAddr( (String) session.getAttribute("addr") );
-//		data.setGender( (String) session.getAttribute("gender") );
-//		data.setEmail( (String) session.getAttribute("phone") );
-		
-//		session.setAttribute("nick", memberService.getNick(loginParam));
-		
-//		session.getAttribute("pw"); // jsp에 이미 적용됨
-//		session.setAttribute("email", memberService.getUserinfo(member));
-//		session.getAttribute("name");
-//		session.getAttribute("addr");
-//		session.getAttribute("gender");
-//		session.getAttribute("phone");
 		
 //		logger.info("pw", data.getPw());
 //		logger.info("member: {}", member);

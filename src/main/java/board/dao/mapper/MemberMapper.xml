@@ -36,7 +36,6 @@
 		SELECT id, pw, nick, email, name, address, gender, phone
 		FROM member
 		WHERE id = #{id}
-	
 	</select>
 </mapper>    
 
