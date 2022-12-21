@@ -68,6 +68,12 @@ public class MemberController {
 			session.setAttribute("isLogin", isLogin);
 			session.setAttribute("id", loginParam.getId()); 
 			session.setAttribute("nick", memberService.getNick(loginParam));
+			session.setAttribute("pw", loginParam.getPw()); 
+			session.setAttribute("name", loginParam.getName()); 
+			session.setAttribute("gender", loginParam.getGender()); 
+			session.setAttribute("phone", loginParam.getPhone()); 
+			session.setAttribute("addr", loginParam.getAddr()); 
+			session.setAttribute("email", loginParam.getEmail()); 
 			logger.info("로그인 성공");
 		} else {  //로그인 실패
 			session.invalidate();  //강제 로그아웃 처리하는 코드(세션 정보 지우기)
@@ -94,7 +100,7 @@ public class MemberController {
 	
 		return result;
 	}	
-	//원래는 Map<Object, Object> 로 만들어야하는데 지금은 굳이 필요없는 코드
+	//원래는 Map<Object, Object> 로 만들어야하는데 지금은 굳이 필요없어도 되는 코드
 	@RequestMapping("/member/id2")
 	@ResponseBody
 	public Map<Object, Object> idCheck2(Member member) {
@@ -129,18 +135,25 @@ public class MemberController {
 		Member data = memberService.getUserinfo(member);
 		
 //		data.setPw( (String) session.getAttribute("pw") );
-//		data.setEmail( (String) session.getAttribute("email") );
+		data.setEmail( (String) session.getAttribute("email") );
 //		data.setName( (String) session.getAttribute("name"));
 //		data.setAddr( (String) session.getAttribute("addr") );
 //		data.setGender( (String) session.getAttribute("gender") );
 //		data.setEmail( (String) session.getAttribute("phone") );
 		
-//		String i = data.getName();
-//		logger.info("i: {}", i);
+//		session.setAttribute("nick", memberService.getNick(loginParam));
 		
-		logger.info("pw", data.getPw());
-		logger.info("member: {}", member);
+//		session.getAttribute("pw"); // jsp에 이미 적용됨
+//		session.setAttribute("email", memberService.getUserinfo(member));
+//		session.getAttribute("name");
+//		session.getAttribute("addr");
+//		session.getAttribute("gender");
+//		session.getAttribute("phone");
+		
+//		logger.info("pw", data.getPw());
+//		logger.info("member: {}", member);
 		logger.info("data: {}", data);
+		
 		
 //		model.addAttribute("data", data);
 		

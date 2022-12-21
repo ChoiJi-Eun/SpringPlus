@@ -24,15 +24,19 @@ button { margin-left: 100px; }
 
 <div id="login">
 <form action="<%=request.getContextPath() %>./login" method="post">
-id: 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pw: 2&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;닉: 3<br>
-id: a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pw: b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;닉: c<br>
-id: b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pw: c&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;닉: d<br>
-id: r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pw: rr&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;닉: rrr<br>
-id: writer1&nbsp;&nbsp;&nbsp;pw: writer11&nbsp;&nbsp;닉: writer111<br>
-id: writer2&nbsp;&nbsp;&nbsp;pw: writer22&nbsp;&nbsp;닉: writer222<br>
-id: writer3&nbsp;&nbsp;&nbsp;pw: writer33&nbsp;&nbsp;닉: writer333<br>
-id: aaaa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pw: 123&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp닉: dfsdf<br>
-id: Apple&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pw: 123&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp닉: dfsdf<br>
+<!-- id: 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pw: 2&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;닉: 3<br> -->
+<!-- id: a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pw: b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;닉: c<br> -->
+<!-- id: b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pw: c&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;닉: d<br> -->
+<!-- id: r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pw: rr&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;닉: rrr<br> -->
+<!-- id: writer1&nbsp;&nbsp;&nbsp;pw: writer11&nbsp;&nbsp;닉: writer111<br> -->
+<!-- id: writer2&nbsp;&nbsp;&nbsp;pw: writer22&nbsp;&nbsp;닉: writer222<br> -->
+<!-- id: writer3&nbsp;&nbsp;&nbsp;pw: writer33&nbsp;&nbsp;닉: writer333<br> -->
+<!-- id: aaaa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pw: 123&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp닉: dfsdf<br> -->
+<!-- id: Apple&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pw: 123&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp닉: dfsdf<br> -->
+
+id: 테스트<br>
+id: test<br>
+id: aa<br>
 
 <br>
 	<label>아이디</label> <input type="text" name="id"><br>

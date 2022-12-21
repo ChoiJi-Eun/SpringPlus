@@ -49,7 +49,7 @@ $(document).ready(function() {			/* 페이지 이동 */
 	
 	
 	<label>비밀번호<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
-	<input type="password" id="pw" name="pw" required value="${m.pw }"><br>
+	<input type="password" id="pw" name="pw" required value="${pw }"><br>
 	
 
 	<label>닉네임<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
@@ -57,17 +57,17 @@ $(document).ready(function() {			/* 페이지 이동 */
 	
 	
 	<label>이름<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
-	<input type="text" id="name" name="name" required value="${data.name }"><br>
+	<input type="text" id="name" name="name" required value="${name }"><br>
 	
 	<label>성별</label>
-	<input type="radio" name="gender" value="man" checked="checked" style="width: 50px; margin: 0px -20px -20px;">&nbsp;남자
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input type="radio" name="gender" value="woman" required style="width: 50px; margin: 0px -20px -20px;">&nbsp;여자<br>
+	<input type="text" id="gender" name="gender" value="${gender }" required ><br>
+<!-- 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+<!-- 	<input type="radio" name="gender" value="woman" required style="width: 50px; margin: 0px -20px -20px;">&nbsp;여자<br> -->
 	
 	<label>전화번호<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
-	<input id="phone1" name="phone" style="width: 90px; height: 29.99px;" value="${m.phone[0] }">${phone[0] }
-	-&nbsp;<input id="phone2" name="phone" style="width: 90px; height: 29.99px;" value="${m.phone[1] }">${phone[1] }
-	-&nbsp;<input id="phone3" name="phone" style="width: 90px; height: 29.99px;" value="${m.phone[2] }">${phone[2] }<br>
+	<input id="phone1" name="phone" style="width: 90px; height: 29.99px;" value="${phone[0] }">${phone[0] }
+	-&nbsp;<input id="phone2" name="phone" style="width: 90px; height: 29.99px;" value="${phone[1] }">${phone[1] }
+	-&nbsp;<input id="phone3" name="phone" style="width: 90px; height: 29.99px;" value="${phone[2] }">${phone[2] }<br>
 
 <!-- <label>전화번호<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label> DB저장 됨 -->
 <!-- <input name="phone" id="phone4" required="required" placeholder="  '-' 를 포함해 입력해주세요" -->
@@ -81,17 +81,17 @@ $(document).ready(function() {			/* 페이지 이동 */
 <!-- 	<input type="text" id="addr" name="addr"><br> -->
 
 	<!-- https://postcode.map.daum.net/guide -->
-	<input type="text" class="address_input_1"  name="addr" id="sample6_postcode" style="width: 75px;" value="${m.addr[0] }">${addr[0] }
+	<input type="text" class="address_input_1"  name="addr" id="sample6_postcode" style="width: 75px;" value="${addr[0] }">${addr[0] }
 	<input type="button" onclick="sample6_execDaumPostcode()" value="주소검색" style="width: 100px;">
 	<input type="hidden" class="sample6_extraAddress" id="sample6_extraAddress" style="width: 135px;"><br>
 	
-	<label></label>&nbsp;<input type="text" class="address_input_2" name="addr" id="sample6_address" style="width: 400px;" value="${m.addr[1] }">${addr[1] }<br>
+	<label></label>&nbsp;<input type="text" class="address_input_2" name="addr" id="sample6_address" style="width: 400px;" value="${addr[1] }">${addr[1] }<br>
 	
-	<label></label>&nbsp;<input type="text" class="address_input_3" name="addr" id="sample6_detailAddress" style="width: 400px;" value="${m.addr[2] }">${addr[2] }<br>
+	<label></label>&nbsp;<input type="text" class="address_input_3" name="addr" id="sample6_detailAddress" style="width: 400px;" value="${addr[2] }">${addr[2] }<br>
 	
 	
 	<label>이메일</label>
-	<input type="email" id="email" name="email" placeholder="example@gmail.com" value="${m.email }"><br><br>
+	<input type="email" id="email" name="email" placeholder="example@gmail.com" value="${email }"><br><br>
 	
 	<div id="btn">
 		<button type="button" id="btnUpdate">수정</button>&nbsp;&nbsp;&nbsp;
