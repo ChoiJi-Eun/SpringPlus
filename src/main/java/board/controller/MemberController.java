@@ -68,7 +68,7 @@ public class MemberController {
 			session.setAttribute("isLogin", isLogin);
 			session.setAttribute("id", loginParam.getId()); 
 			session.setAttribute("nick", memberService.getNick(loginParam));
-			session.setAttribute("pw", loginParam.getPw()); 
+//			session.setAttribute("pw", loginParam.getPw()); 
 			session.setAttribute("name", loginParam.getName()); 
 			session.setAttribute("gender", loginParam.getGender()); 
 			session.setAttribute("phone", loginParam.getPhone()); 
@@ -132,7 +132,14 @@ public class MemberController {
 	public void mypage(Member member, HttpSession session, Model model) {
 		logger.info("/member/mypage");
 		
+		String id = (String) session.getAttribute("id");
+		logger.info("String id:{}", id);
+		
 		Member data = memberService.getUserinfo(member);
+		model.addAttribute("member", data);
+		logger.info("Member data:{}", data);
+
+//		member.setId(member.getId());
 		
 //		data.setPw( (String) session.getAttribute("pw") );
 //		data.setEmail( (String) session.getAttribute("email") );
@@ -152,7 +159,7 @@ public class MemberController {
 		
 //		logger.info("pw", data.getPw());
 //		logger.info("member: {}", member);
-		logger.info("data: {}", data);
+//		logger.info("data: {}", data);
 		
 		
 //		model.addAttribute("data", data);

@@ -43,7 +43,7 @@ $(document).ready(function() {			/* 페이지 이동 */
 		$(location).attr("href", "/member/login")
 	})
 
-	
+	/* 비밀번호 눈 img */
     $('.pass img').on('click',function(){
         $('input').toggleClass('active');
         if($('input').hasClass('active')){
@@ -86,7 +86,7 @@ $(document).ready(function() {			/* 페이지 이동 */
 	
 	
 	<label>이름<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
-	<input type="text" id="name" name="name" required value="${name }"><br>
+	<input type="text" id="name" name="name" required value="${member.name }"><br>
 	
 	<label>성별</label>
 	<input type="text" id="gender" name="gender" value="${gender }" required ><br>
