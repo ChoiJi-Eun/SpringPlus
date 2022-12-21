@@ -135,7 +135,7 @@ public class MemberController {
 		Member data = memberService.getUserinfo(member);
 		
 //		data.setPw( (String) session.getAttribute("pw") );
-		data.setEmail( (String) session.getAttribute("email") );
+//		data.setEmail( (String) session.getAttribute("email") );
 //		data.setName( (String) session.getAttribute("name"));
 //		data.setAddr( (String) session.getAttribute("addr") );
 //		data.setGender( (String) session.getAttribute("gender") );

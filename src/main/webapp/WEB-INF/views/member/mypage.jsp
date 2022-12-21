@@ -5,7 +5,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:import url="../layout/header.jsp" />
-
+<!-- <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
+<link rel="stylesheet" href="../resources/eye-solid.svg">
 <style type="text/css">
 #join {
 	margin-left: 170px; 
@@ -22,6 +23,12 @@ input {
 	width: 300px;
 }
 #btn { font-size: 1.2em;  }
+/* div.pass i{ */
+/*      position: absolute;  */
+/*      left: 75%;  */
+/*      top: 27px;  */
+/*     color: orange; */
+/* } */
 </style>
 <script type="text/javascript">
 $(document).ready(function() {			/* 페이지 이동 */
@@ -31,11 +38,22 @@ $(document).ready(function() {			/* 페이지 이동 */
 	$("#btnCancel").click(function() {
 		$(location).attr("href", "/member/main")
 	})
+
 	
+//     $('.pass i').on('click',function(){
+//         $('input').toggleClass('active');
+//         if($('input').hasClass('active')){
+//             $(this).attr('class',"fa fa-eye-slash fa-lg")
+//             .prev('input').attr('type',"text");
+//         }else{
+//             $(this).attr('class',"fa fa-eye fa-lg")
+//             .prev('input').attr('type','password');
+//         }
+//     });	
 })
 </script>
 
-<br><h4>마이페이지</h4>
+<br><h4>마이페이지  <button type="reset" id="btnCancel">멤버메인</button></h4>
 <hr>
  
 <%-- 로그인 상태 --%>
@@ -47,9 +65,12 @@ $(document).ready(function() {			/* 페이지 이동 */
 	<label>아이디<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
 	<input type="text" class="id" id="id" name="id" required value="${id }"><br>
 	
-	
 	<label>비밀번호<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
-	<input type="password" id="pw" name="pw" required value="${pw }"><br>
+	<input type="password" id="pw" name="pw" required value="${pw }">
+
+	<div class="pass">
+		<i class="fa fa-eye fa-lg"></i><br>
+	</div>
 	
 
 	<label>닉네임<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>

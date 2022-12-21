@@ -6,7 +6,7 @@
 
 <c:import url="../layout/header.jsp" />
 
-<br><h4>회원가입 메인 페이지</h4>
+<br><h4>멤버 메인 페이지</h4>
 <hr>
 
 <div id="logInOut" style=" text-align: center;">
