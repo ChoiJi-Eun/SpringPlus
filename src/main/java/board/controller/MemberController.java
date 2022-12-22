@@ -150,6 +150,7 @@ public class MemberController {
 		
 		
 //		model.addAttribute("data", data);
+//		model.addAttribute("m", data);
 		
 	}
 }
