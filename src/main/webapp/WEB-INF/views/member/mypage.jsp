@@ -82,7 +82,7 @@ function gender() {
 </script>
 
 <br><h4>마이페이지  
-<button type="reset" id="btnCancel">멤버메인페이지</button>
+<button type="button" id="btnCancel">멤버메인페이지</button>
 <button type="button" id="btnLogin">로그인</button>
 </h4>
 <hr>
@@ -142,7 +142,8 @@ function gender() {
 	
 	<div id="btn">
 		<button type="button" id="btnUpdate">수정</button>&nbsp;&nbsp;&nbsp;
-		<button type="reset" id="btnCancel">취소</button></div><!-- #btn end -->
+		<button type="button" id="btnCancel" onclick="/member/main">취소</button>
+	</div><!-- #btn end -->
 		
 <!-- </form> -->
 </div><!-- #mypage end -->
