@@ -55,21 +55,34 @@ $(document).ready(function() {			/* 페이지 이동 */
         }
     });	
     
-	gender()
-    
+	gender()  /* 가져온 성별 데이터 radio로  */
+	
+	/* phone[] */
+	$("#phone1").val( '${m.phone}'.split(",")[0] )
+	$("#phone2").val( '${m.phone}'.split(",")[1] )
+	$("#phone3").val( '${m.phone}'.split(",")[2] )
+  
 })
 function gender() {
-	cosole.log(${m.gender })
+	<%--
+// 	var g = ${m.gender }
+// 	var m = $("#man")
+// 	cosole.log( g)
 	
-	if( ${m.gender }.equals("man") ) {
-		$(this).attr('id', "men").prev('input').attr('checked',"checked")
-	}
-	if( ${m.gender }.equals("woman") ) {
-		$(this).attr('id', "women").prev('input').attr('checked',"checked")
-	}
-	
+// 	if( ${m.gender }.equals("man") ) {
+// // 		$(this).attr('id', "men").prev('input').attr('checked',"checked")
+// 		$(this).prev('input').attr('checked',"checked")
+// 	}
+// 	if( ${m.gender }.equals("woman") ) {
+// 		$(this).attr('id', "woman").prev('input').attr('checked',"checked")
+// 	}
+// 	if( ${m.gender } == "man" ) {
+// 		$(this).attr('id', "man").prev('input').attr('checked','checked')
+// 		$(this).attr('checked','checked')
+// 	}
+	--%>
+	$("#" + "${m.gender }").prop("checked", true)
 
-	cosole.log("gender()")
 }
 </script>
 
@@ -107,14 +120,14 @@ function gender() {
 	
 	
 	<label>성별</label>
-	<input type="text" id="gender" name="gender" value="${m.gender }" required >
+<%-- 	<input type="text" id="gender" name="gender" value="${m.gender }" required > --%>
 	
-	<input type="radio" name="gender" value="man" id="man" style="width: 50px; margin: 0px -20px -20px;">&nbsp;남자
+	<input type="radio" name="gender" id="man" style="width: 50px; margin: 0px -20px -20px;">&nbsp;남자
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input type="radio" name="gender" value="woman" id="woman" required style="width: 50px; margin: 0px -20px -20px;">&nbsp;여자<br>
+	<input type="radio" name="gender" id="woman" required style="width: 50px; margin: 0px -20px -20px;">&nbsp;여자<br>
 
 <%-- 	<% if (gender != null && gender.equals("man")) { %>checked<% }	%> --%>
-	<c:if test="${m.gender }"></c:if>
+<%-- 	<c:if test="${m.gender }"></c:if> --%>
 	
 	
 	
@@ -125,25 +138,14 @@ function gender() {
 <%-- 	-&nbsp;<input id="phone2" name="phone" style="width: 90px; height: 29.99px;" value="${m.phone[1] }"> --%>
 <%-- 	-&nbsp;<input id="phone3" name="phone" style="width: 90px; height: 29.99px;" value="${m.phone[2] }"><br> --%>
 	
-	<input id="phone1" name="phone" style="width: 90px; height: 29.99px;" value="${phone[0] }">
-	-&nbsp;<input id="phone2" name="phone" style="width: 90px; height: 29.99px;" value="${phone[1] }">
-	-&nbsp;<input id="phone3" name="phone" style="width: 90px; height: 29.99px;" value="${phone[2] }"><br>
+	<input id="phone1" name="phone" style="width: 90px; height: 29.99px;">
+	-&nbsp;<input id="phone2" name="phone" style="width: 90px; height: 29.99px;">
+	-&nbsp;<input id="phone3" name="phone" style="width: 90px; height: 29.99px;"><br>
 
 	
 	
 	<label>주소</label>
-	<input type="text" id="addr" name="addr" value="${m.addr }">${addr }<br><br>
-	<label></label>
-	
-	<!-- https://postcode.map.daum.net/guide -->
-	<input type="text" class="address_input_1"  name="addr" id="sample6_postcode" style="width: 75px;" value="${m.addr[0] }">${addr[0] }
-<!-- 	<input type="button" onclick="sample6_execDaumPostcode()" value="주소검색" style="width: 100px;"> -->
-	<input type="hidden" class="sample6_extraAddress" id="sample6_extraAddress" style="width: 135px;"><br>
-	
-	<label></label>&nbsp;<input type="text" class="address_input_2" name="addr" id="sample6_address" style="width: 400px;" value="${m.addr[1] }">${addr[1] }<br>
-	
-	<label></label>&nbsp;<input type="text" class="address_input_3" name="addr" id="sample6_detailAddress" style="width: 400px;" value="${m.addr[2] }">${addr[2] }<br>
-	
+	<textarea id="addr" name="addr" style="width: 300px; height:80px;">${m.addr }</textarea><br>
 	
 	
 	<label>이메일</label>

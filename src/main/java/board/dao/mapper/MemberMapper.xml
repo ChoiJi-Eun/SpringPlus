@@ -33,7 +33,7 @@
 
 
 	<select id="selectMember" resultType="Member" parameterType="Member">
-		SELECT id, pw, nick, email, name, address, gender, phone
+		SELECT id, pw, nick, email, name, address addr, gender, phone
 		FROM member
 		WHERE id = #{id}
 	</select>
