@@ -55,7 +55,22 @@ $(document).ready(function() {			/* 페이지 이동 */
         }
     });	
     
+	gender()
+    
 })
+function gender() {
+	cosole.log(${m.gender })
+	
+	if( ${m.gender }.equals("man") ) {
+		$(this).attr('id', "men").prev('input').attr('checked',"checked")
+	}
+	if( ${m.gender }.equals("woman") ) {
+		$(this).attr('id', "women").prev('input').attr('checked',"checked")
+	}
+	
+
+	cosole.log("gender()")
+}
 </script>
 
 <br><h4>마이페이지  
@@ -90,15 +105,16 @@ $(document).ready(function() {			/* 페이지 이동 */
 	<label>이름<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
 	<input type="text" id="name" name="name" required value="${m.name }"><br>
 	
+	
 	<label>성별</label>
 	<input type="text" id="gender" name="gender" value="${m.gender }" required >
 	
-	<input type="radio" name="gender" value="man" style="width: 50px; margin: 0px -20px -20px;">&nbsp;남자
+	<input type="radio" name="gender" value="man" id="man" style="width: 50px; margin: 0px -20px -20px;">&nbsp;남자
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input type="radio" name="gender" value="woman" required style="width: 50px; margin: 0px -20px -20px;">&nbsp;여자<br>
+	<input type="radio" name="gender" value="woman" id="woman" required style="width: 50px; margin: 0px -20px -20px;">&nbsp;여자<br>
 
 <%-- 	<% if (gender != null && gender.equals("man")) { %>checked<% }	%> --%>
-	<c:if test=""></c:if>
+	<c:if test="${m.gender }"></c:if>
 	
 	
 	
@@ -113,25 +129,21 @@ $(document).ready(function() {			/* 페이지 이동 */
 	-&nbsp;<input id="phone2" name="phone" style="width: 90px; height: 29.99px;" value="${phone[1] }">
 	-&nbsp;<input id="phone3" name="phone" style="width: 90px; height: 29.99px;" value="${phone[2] }"><br>
 
-<!-- <label>전화번호<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label> DB저장 됨 -->
-<!-- <input name="phone" id="phone4" required="required" placeholder="  '-' 를 포함해 입력해주세요" -->
-<!--  style="width: 300px; border: 1px solid black;"><span id="phonemsg"></span><br> -->
-
-<!-- 각각 받아온 걸 같은 컬럼에 저장하려면 java코드로 따로 합성해서 사용하기 -->
-
 	
 	
 	<label>주소</label>
-<!-- 	<input type="text" id="addr" name="addr"><br> -->
-
+	<input type="text" id="addr" name="addr" value="${m.addr }">${addr }<br><br>
+	<label></label>
+	
 	<!-- https://postcode.map.daum.net/guide -->
 	<input type="text" class="address_input_1"  name="addr" id="sample6_postcode" style="width: 75px;" value="${m.addr[0] }">${addr[0] }
-	<input type="button" onclick="sample6_execDaumPostcode()" value="주소검색" style="width: 100px;">
+<!-- 	<input type="button" onclick="sample6_execDaumPostcode()" value="주소검색" style="width: 100px;"> -->
 	<input type="hidden" class="sample6_extraAddress" id="sample6_extraAddress" style="width: 135px;"><br>
 	
 	<label></label>&nbsp;<input type="text" class="address_input_2" name="addr" id="sample6_address" style="width: 400px;" value="${m.addr[1] }">${addr[1] }<br>
 	
 	<label></label>&nbsp;<input type="text" class="address_input_3" name="addr" id="sample6_detailAddress" style="width: 400px;" value="${m.addr[2] }">${addr[2] }<br>
+	
 	
 	
 	<label>이메일</label>
