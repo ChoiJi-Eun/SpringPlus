@@ -9,12 +9,12 @@
 <link rel="stylesheet" href="../resources/eye-solid.svg">
 
 <style type="text/css">
-#join {
+#mypage {
 	margin-left: 170px; 
 	font-size: 1.2em;
 }
-#join label { 
-	display: inline-block;
+#mypage label { 
+/* 	display: inline-block; */
 	width: 122px;
 }
 #btnUpdate { margin-left: 130px; }
@@ -24,18 +24,13 @@ input {
 	width: 300px;
 }
 #btn { font-size: 1.2em;  }
-div.pass i{ 
-/*      position: absolute;  */
-/*      left: 75%;  */
-/*      top: 27px;  */
-    color: orange; 
-} 
+ 
 </style>
 <script type="text/javascript">
 $(document).ready(function() {			/* 페이지 이동 */
-	$("#btnUpdate").click(function() {
-		$(location).attr("href", "/member/update")
-	})
+// 	$("#btnUpdate").click(function() {
+// 		$(location).attr("href", "/member/update")
+// 	})
 	$("#btnCancel").click(function() {
 		$(location).attr("href", "/member/main")
 	})
@@ -95,7 +90,7 @@ function gender() {
 <%-- 로그인 상태 --%>
 <c:if test="${not empty isLogin }">
 
-<div id="join">
+<div id="mypage">
 <%-- <form action="<%=request.getContextPath() %>./join" method="post" onsubmit="return validate();">   --%>
 
 	<label>아이디<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
@@ -124,13 +119,7 @@ function gender() {
 	
 	<input type="radio" name="gender" id="man" style="width: 50px; margin: 0px -20px -20px;">&nbsp;남자
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input type="radio" name="gender" id="woman" required style="width: 50px; margin: 0px -20px -20px;">&nbsp;여자<br>
-
-<%-- 	<% if (gender != null && gender.equals("man")) { %>checked<% }	%> --%>
-<%-- 	<c:if test="${m.gender }"></c:if> --%>
-	
-	
-	
+	<input type="radio" name="gender" id="woman" style="width: 50px; margin: 0px -20px -20px;">&nbsp;여자<br>
 	
 	
 	<label>전화번호<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
@@ -143,7 +132,6 @@ function gender() {
 	-&nbsp;<input id="phone3" name="phone" style="width: 90px; height: 29.99px;"><br>
 
 	
-	
 	<label>주소</label>
 	<textarea id="addr" name="addr" style="width: 300px; height:80px;">${m.addr }</textarea><br>
 	
@@ -151,12 +139,13 @@ function gender() {
 	<label>이메일</label>
 	<input type="email" id="email" name="email" placeholder="example@gmail.com" value="${m.email }"><br><br>
 	
+	
 	<div id="btn">
 		<button type="button" id="btnUpdate">수정</button>&nbsp;&nbsp;&nbsp;
 		<button type="reset" id="btnCancel">취소</button></div><!-- #btn end -->
 		
 <!-- </form> -->
-</div><!-- #join end -->
+</div><!-- #mypage end -->
 
 
 
