@@ -63,7 +63,7 @@ public interface MemberDao {
 	 * @param member - 회원 정보
 	 * @return int
 	 */
-	public int selectPw(Member member);
+	public int pwChk(Member member);
 	
 	
 }

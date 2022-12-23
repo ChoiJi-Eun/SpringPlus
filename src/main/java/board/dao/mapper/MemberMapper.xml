@@ -46,6 +46,7 @@
 		DELETE FROM member
 		WHERE id = #{id} AND pw = #{pw}
 	</delete>
+	
 <!-- 패스워드 체크(탈퇴시) -->
 	<select id="pwChk" resultType="int" parameterType="Member">
 		SELECT count(*) FROM member

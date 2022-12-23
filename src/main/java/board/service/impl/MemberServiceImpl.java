@@ -67,7 +67,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int pwChk(Member member) {
-		int result = memberDao.selectPw(member);
+		int result = memberDao.pwChk(member);
 		return result;
 	}
 	

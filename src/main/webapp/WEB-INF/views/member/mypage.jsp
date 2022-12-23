@@ -67,23 +67,34 @@ $(document).ready(function() {			/* 페이지 이동 */
 })
 function memberDel() {
 
-	var result = confirm("회원탈퇴를 진행하시겠습니까??")
-	
-// 	if(result == true) {
-// 		alert("확인을 눌렀습니다.")
-		$(location).attr("href", "/member/delete")
-// 	} else {
-// 		alert("회원탈퇴가 취소되었습니다")
-// 	}
-	
+// 	var result = confirm("회원탈퇴를 진행하시겠습니까??")
+
 	//탈퇴시 비밀번호 눌러야 가능하게~ 
+	$.ajax({
+		type: "/member/mypage/delete"		//요청 메소드
+		, url: "post"		//요청 URL
+		, data: $("#pw")		//요청 파라미터
+		, dataType: "json"	//응답 데이터 형식
+		, success: function( result ) {
+			console.log("AJAX 성공")
+			confirm("회원탈퇴를 진행하시겠습니까??")
+			
+			if(result == true) {
+				alert("확인을 눌렀습니다.")
+				
+// 				$(location).attr("href", "/member/delete")
+
+			} else {
+				alert("회원탈퇴 - 취소버튼을 눌렀습니다.")
+			}
+			
+		}
+		, error: function() {
+			console.log("AJAX 실패")
+			alert("회원탈퇴가 취소되었습니다")
+		}
+	})	
 	
-// 	if(result == true) {
-// 		alert("확인을 눌렀습니다.")
-// 		$(location).attr("href", "/member/delete")
-// 	} else {
-// 		alert("회원탈퇴가 취소되었습니다")
-// 	}
 }
 </script>
 
