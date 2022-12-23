@@ -29,9 +29,9 @@ input {
 </style>
 <script type="text/javascript">
 $(document).ready(function() {			/* 페이지 이동 */
-// 	$("#btnUpdate").click(function() {
-// 		$(location).attr("href", "/member/update")
-// 	})
+	$("#btnLogout").click(function() {
+		$(location).attr("href", "/member/logout")
+	})
 	$("#btnCancel").click(function() {
 		$(location).attr("href", "../member/main?id=${id}")
 	})
@@ -67,25 +67,31 @@ $(document).ready(function() {			/* 페이지 이동 */
 })
 function memberDel() {
 
-// 	var result = confirm("회원탈퇴를 진행하시겠습니까??")
 
 	//탈퇴시 비밀번호 눌러야 가능하게~ 
 	$.ajax({
-		type: "/member/mypage/delete"		//요청 메소드
-		, url: "post"		//요청 URL
-		, data: $("#pw")		//요청 파라미터
+		type: "post"		//요청 메소드
+		, url: "/member/mypage/delete"		//요청 URL
+		, data: $("#pw").serializeArray()	//요청 파라미터 serialize / serializeObject
 		, dataType: "json"	//응답 데이터 형식
 		, success: function( result ) {
 			console.log("AJAX 성공")
-			confirm("회원탈퇴를 진행하시겠습니까??")
+// 			var result = confirm("회원탈퇴를 진행하시겠습니까??")
 			
-			if(result == true) {
-				alert("확인을 눌렀습니다.")
+			if(result == 1) {
+				if(confirm("회원탈퇴를 진행하시겠습니까??")){
+// 				alert("확인을 눌렀습니다.")
 				
-// 				$(location).attr("href", "/member/delete")
+				
+				$("#btnDelete").submit();
+				$(location).attr("href", "/member/delete")
+					
+				}
 
 			} else {
-				alert("회원탈퇴 - 취소버튼을 눌렀습니다.")
+// 				alert("회원탈퇴 - 취소버튼을 눌렀습니다.")
+				alert("취소되었습니다")
+				return false
 			}
 			
 		}
@@ -98,18 +104,26 @@ function memberDel() {
 }
 </script>
 
-<br><h4>마이페이지  
-<button type="button" id="btnCancel">멤버메인페이지</button>
-<button type="button" id="btnLogin">로그인</button>
-</h4>
-<hr>
+<%-- 비로그인 상태 --%>
+<c:if test="${empty isLogin }">
+	<br><h4>마이페이지  
+	<button type="button" id="btnCancel">멤버메인페이지</button>
+	<button type="button" id="btnLogin">로그인</button>
+	</h4>
+	<hr>
+</c:if>
  
 <%-- 로그인 상태 --%>
 <c:if test="${not empty isLogin }">
-
+	<br><h4>마이페이지 
+	<button type="button" id="btnCancel">멤버메인페이지</button>
+	<button type="button" id="btnLogout">로그아웃</button>
+	</h4>
+	<hr>
+	
+	
 <div id="mypage">
-<%-- <form action="<%=request.getContextP
-ath() %>./join" method="post" onsubmit="return validate();">   --%>
+<form action="<%=request.getContextPath() %>./mypage" method="post">  
 
 	<label>아이디<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
 	<input type="text" class="id" id="id" name="id" required value="${id }"><br>
@@ -155,12 +169,12 @@ ath() %>./join" method="post" onsubmit="return validate();">   --%>
 	
 	
 	<div id="btn">
-		<button type="button" id="btnUpdate">수정</button>&nbsp;&nbsp;&nbsp;
-		<button type="button" id="btnCancel" onclick="/member/main?id=${id}">취소</button>&nbsp;&nbsp;&nbsp;
-		<button type="button" id="btnDelete" onclick="memberDel()">탈퇴</button>
+<!-- 		<button type="button" id="btnUpdate">수정</button>&nbsp;&nbsp;&nbsp; -->
+<!-- 		<button type="button" id="btnCancel">취소</button>&nbsp;&nbsp;&nbsp; -->
+		<button type="submit" id="btnDelete" onclick="memberDel()">탈퇴</button>
 	</div><!-- #btn end -->
 		
-<!-- </form> -->
+</form>
 </div><!-- #mypage end -->
 
 </c:if>

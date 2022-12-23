@@ -139,7 +139,6 @@ function validateID( id ) {
 				
 				if(result > 0) { // 1=>이미있는아이디, 0=>없는아이디(사용가능)
 					$("#idmsg").html('사용 불가능한 아이디입니다. 다시 시도해주세요');
-					$("#idmsg").attr('color','red');
 					$("submit").attr("disabled", "disabled");
 				} else {
 					if( !/^[a-zA-Z0-9]{4,10}$/.test( id )  ) {
@@ -147,7 +146,7 @@ function validateID( id ) {
 						return false
 					}
 					$("#idmsg").html('사용 가능한 아이디입니다.');
-					$("#idmsg").attr('color','blue');
+					$("#idmsg").attr('color','blue'); //작동안함
 					$("submit").removerAttr("disabled");
 				} 
 			},

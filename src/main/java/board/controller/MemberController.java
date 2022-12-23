@@ -159,8 +159,10 @@ public class MemberController {
 		
 		if( result == 1 ) {
 			logger.info("delete-member 준비 완료");
+			logger.info("result=1");
 		} else {
 			logger.info("delete-member 취소");
+			logger.info("result=0");
 		}
 		return result;
 		
