@@ -31,7 +31,6 @@ public class MemberController {
 		logger.info("/member/main");
 	}
 	
-	
 	@GetMapping("/member/join")
 	public void join() {
 		logger.info("/member/join [GET]");
@@ -81,7 +80,6 @@ public class MemberController {
 		}
 		return "redirect:/member/main";
 	}
-	
 	
 	@RequestMapping("/member/logout")
 	public String logout(HttpSession session) {
@@ -134,23 +132,22 @@ public class MemberController {
 		
 		String id = (String) session.getAttribute("id");
 		logger.info("String id:{}", id);
-		
-//		member = (Member) session.getAttribute("member");
-//		logger.info("Member member1:{}", member);
-		
+
 		model.addAttribute("m", memberService.getUserinfo(member));
 		logger.info("String id2:{}", id);
-		logger.info("Member member2:{}", member);
-//		logger.info("Member Name:{}", member.getName());
-
+	}
+	//------------------------------------------------------------
+	
+	@RequestMapping("/member/mypage/delete")
+	@ResponseBody
+	public void delete() {
+		logger.info("/member/mypage - delete");
+	}
+	
+	@RequestMapping("/member/delete")
+	public void memberDelete() {
+		logger.info("/member/delete");
 		
-//		logger.info("pw", data.getPw());
-//		logger.info("member: {}", member);
-//		logger.info("data: {}", data);
-		
-		
-//		model.addAttribute("data", data);
-//		model.addAttribute("m", data);
-		
+//		return "redirect:/member/main";
 	}
 }
