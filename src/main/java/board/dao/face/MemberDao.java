@@ -56,6 +56,14 @@ public interface MemberDao {
 	 * @param id - 로그인한 회원의 정보
 	 */
 	public void delete(String id);
+
+	/**
+	 * 회원탈퇴시 필요한 pw 데이터 유무
+	 * 
+	 * @param member - 회원 정보
+	 * @return int
+	 */
+	public int selectPw(Member member);
 	
 	
 }

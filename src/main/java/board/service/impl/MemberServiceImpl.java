@@ -64,6 +64,12 @@ public class MemberServiceImpl implements MemberService {
 		logger.info("ser.deleteMember(String id)");
 		memberDao.delete(id);
 	}
+
+	@Override
+	public int pwChk(Member member) {
+		int result = memberDao.selectPw(member);
+		return result;
+	}
 	
 	
 

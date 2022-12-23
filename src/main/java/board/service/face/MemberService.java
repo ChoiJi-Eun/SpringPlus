@@ -61,4 +61,12 @@ public interface MemberService {
 	 */
 	public void deleteMember(String id);
 
+	/**
+	 * 회원탈퇴시 필요한 pw값 있는지 없는지
+	 * 
+	 * @param member - 회원 정보
+	 * @return int
+	 */
+	public int pwChk(Member member);
+
 }

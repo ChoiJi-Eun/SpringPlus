@@ -139,13 +139,15 @@ public class MemberController {
 	//------------------------------------------------------------
 
 	@RequestMapping("/member/delete")
-	public void memberDelete(HttpSession session) {
+	public void memberDelete(HttpSession session, Member member) {
 		logger.info("/member/delete");
 		
 		String id = (String) session.getAttribute("id");
 		logger.info("delete-id:{}", id);
 		
 		memberService.deleteMember(id);
+		
+		int result = memberService.pwChk(member);
 		
 		session.invalidate(); //세션정보지우기
 	}
