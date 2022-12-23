@@ -137,17 +137,24 @@ public class MemberController {
 		logger.info("String id2:{}", id);
 	}
 	//------------------------------------------------------------
-	
-	@RequestMapping("/member/mypage/delete")
-	@ResponseBody
-	public void delete() {
-		logger.info("/member/mypage - delete");
-	}
-	
+
 	@RequestMapping("/member/delete")
-	public void memberDelete() {
+	public void memberDelete(HttpSession session) {
 		logger.info("/member/delete");
 		
-//		return "redirect:/member/main";
+		String id = (String) session.getAttribute("id");
+		logger.info("delete-id:{}", id);
+		
+//		Member member = memberService.deleteMember(id);
+		
 	}
+	
+//	@RequestMapping("/member/mypage/delete")
+//	@ResponseBody
+//	public void delete() {
+//		logger.info("/member/mypage - delete");
+//		
+////		return "redirect:/member/main";
+//	}
+	
 }

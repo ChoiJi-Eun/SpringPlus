@@ -33,14 +33,14 @@ $(document).ready(function() {			/* 페이지 이동 */
 // 		$(location).attr("href", "/member/update")
 // 	})
 	$("#btnCancel").click(function() {
-		$(location).attr("href", "/member/main")
+		$(location).attr("href", "../member/main?id=${id}")
 	})
 	$("#btnLogin").click(function() {
 		$(location).attr("href", "/member/login")
 	})
-	$("#btnDelete").click(function() {
-		$(location).attr("href", "/member/delete")
-	})
+// 	$("#btnDelete").click(function() {
+// 		$(location).attr("href", "/member/delete")
+// 	})
 
 	/* 비밀번호 눈 img */
     $('.pass img').on('click',function(){
@@ -67,6 +67,15 @@ $(document).ready(function() {			/* 페이지 이동 */
 })
 function memberDel() {
 
+	var result = confirm("회원탈퇴를 진행하시겠습니까??")
+	
+	if(result == true) {
+		alert("확인을 눌렀습니다.")
+		$(location).attr("href", "/member/delete")
+	} else {
+		alert("회원탈퇴가 취소되었습니다")
+	}
+	
 	
 
 }
@@ -115,11 +124,7 @@ ath() %>./join" method="post" onsubmit="return validate();">   --%>
 	
 	
 	<label>전화번호<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
-<%-- 	<input id="phone1" name="phone" style="width: 90px; height: 29.99px;" value="${m.phone[0] }"> --%>
-<%-- 	-&nbsp;<input id="phone2" name="phone" style="width: 90px; height: 29.99px;" value="${m.phone[1] }"> --%>
-<%-- 	-&nbsp;<input id="phone3" name="phone" style="width: 90px; height: 29.99px;" value="${m.phone[2] }"><br> --%>
-	
-	<input id="phone1" name="phone" style="width: 90px; height: 29.99px;">
+		   <input id="phone1" name="phone" style="width: 90px; height: 29.99px;">
 	-&nbsp;<input id="phone2" name="phone" style="width: 90px; height: 29.99px;">
 	-&nbsp;<input id="phone3" name="phone" style="width: 90px; height: 29.99px;"><br>
 
@@ -134,15 +139,12 @@ ath() %>./join" method="post" onsubmit="return validate();">   --%>
 	
 	<div id="btn">
 		<button type="button" id="btnUpdate">수정</button>&nbsp;&nbsp;&nbsp;
-		<button type="button" id="btnCancel" onclick="/member/main">취소</button>&nbsp;&nbsp;&nbsp;
-		<button type="button" id="btnDelete">탈퇴</button>
+		<button type="button" id="btnCancel" onclick="/member/main?id=${id}">취소</button>&nbsp;&nbsp;&nbsp;
+		<button type="button" id="btnDelete" onclick="memberDel()">탈퇴</button>
 	</div><!-- #btn end -->
 		
 <!-- </form> -->
 </div><!-- #mypage end -->
-
-
-
 
 </c:if>
 
