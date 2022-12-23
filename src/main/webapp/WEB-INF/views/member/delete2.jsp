@@ -7,7 +7,10 @@
 <c:import url="../layout/header.jsp" />
 
 <style type="text/css">
-
+#deleteComp {
+	text-align: center;
+	margin-top: 50px;
+}
 
 
 </style>
@@ -56,7 +59,9 @@ $(document).ready(function() {			/* 페이지 이동 */
 <div id="delete">
 
 
-
+	<div id="deleteComp">
+		<h3>탈퇴가 완료되었습니다</h3>
+	</div>
 
 
 </div><!-- #delete end -->

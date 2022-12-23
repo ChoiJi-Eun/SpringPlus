@@ -65,41 +65,58 @@ $(document).ready(function() {			/* 페이지 이동 */
 	
 	
 })
-function memberDel() {
+function memberDel() { //탈퇴시 비밀번호 눌러야 가능하게~  https://prettywho.tistory.com/51
+	
+	
+	
+	
+	
+	
+	
+	
+// 	var result = confirm("회원탈퇴를 진행하시겠습니까??")
+	
+// 	if( result == true ) {
+// 		alert("회원탈퇴 - 확인버튼을 눌렀습니다.")
+// 		$("#btnDelete").submit();
+// 		$(location).attr("href", "/member/delete")
+// 	} else {
+// 		alert("회원탈퇴 - 취소버튼을 눌렀습니다.")
+// 	}
+	
+	
 
-
-	//탈퇴시 비밀번호 눌러야 가능하게~ 
-	$.ajax({
-		type: "post"		//요청 메소드
-		, url: "/member/mypage/delete"		//요청 URL
-		, data: $("#pw").serializeArray()	//요청 파라미터 serialize / serializeObject
-		, dataType: "json"	//응답 데이터 형식
-		, success: function( result ) {
-			console.log("AJAX 성공")
-// 			var result = confirm("회원탈퇴를 진행하시겠습니까??")
+// 	$.ajax({
+// 		type: "post"		//요청 메소드
+// 		, url: "/member/mypage/delete"		//요청 URL
+// 		, data: $("#pw").serializeArray()	//요청 파라미터 serialize / serializeObject
+// 		, dataType: "json"	//응답 데이터 형식
+// 		, success: function( result ) {
+// 			console.log("AJAX 성공")
+// // 			var result = confirm("회원탈퇴를 진행하시겠습니까??")
 			
-			if(result == 1) {
-				if(confirm("회원탈퇴를 진행하시겠습니까??")){
-// 				alert("확인을 눌렀습니다.")
+// 			if(result == 1) {
+// 				if(confirm("회원탈퇴를 진행하시겠습니까??")){
+// // 				alert("확인을 눌렀습니다.")
 				
 				
-				$("#btnDelete").submit();
-				$(location).attr("href", "/member/delete")
+// 				$("#btnDelete").submit();
+// 				$(location).attr("href", "/member/delete")
 					
-				}
+// 				}
 
-			} else {
-// 				alert("회원탈퇴 - 취소버튼을 눌렀습니다.")
-				alert("취소되었습니다")
-				return false
-			}
+// 			} else {
+// // 				alert("회원탈퇴 - 취소버튼을 눌렀습니다.")
+// 				alert("취소되었습니다")
+// 				return false
+// 			}
 			
-		}
-		, error: function() {
-			console.log("AJAX 실패")
-			alert("회원탈퇴가 취소되었습니다")
-		}
-	})	
+// 		}
+// 		, error: function() {
+// 			console.log("AJAX 실패")
+// 			alert("회원탈퇴가 취소되었습니다")
+// 		}
+// 	})	
 	
 }
 </script>
@@ -171,7 +188,7 @@ function memberDel() {
 	<div id="btn">
 <!-- 		<button type="button" id="btnUpdate">수정</button>&nbsp;&nbsp;&nbsp; -->
 <!-- 		<button type="button" id="btnCancel">취소</button>&nbsp;&nbsp;&nbsp; -->
-		<button type="submit" id="btnDelete" onclick="memberDel()">탈퇴</button>
+		<button type="button" id="btnDelete" onclick="location.href='/member/delete'">회원탈퇴</button>
 	</div><!-- #btn end -->
 		
 </form>

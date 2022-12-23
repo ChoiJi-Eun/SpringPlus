@@ -138,6 +138,23 @@ public class MemberController {
 	}
 	//------------------------------------------------------------
 
+	@RequestMapping("/member/mypage/delete")
+	@ResponseBody
+	public int delete(Member member) {
+		logger.info("/member/mypage - delete");
+		
+		int result = memberService.pwChk(member);
+		
+		if( result == 1 ) {
+			logger.info("delete-member 준비 완료 / result=1");
+		} else {
+			logger.info("delete-member 취소 / result=0");
+		}
+		return result;
+		
+//		return "redirect:/member/main";
+	}
+	
 	@RequestMapping("/member/delete")
 	public void memberDelete(HttpSession session) {
 		logger.info("/member/delete");
@@ -148,26 +165,6 @@ public class MemberController {
 		memberService.deleteMember(id);
 	
 		session.invalidate(); //세션정보지우기
-	}
-	
-	@RequestMapping("/member/mypage/delete")
-	@ResponseBody
-	public int delete(Member member) {
-		logger.info("/member/mypage - delete");
-		
-		int result = memberService.pwChk(member);
-		
-		if( result == 1 ) {
-			logger.info("delete-member 준비 완료");
-			logger.info("result=1");
-		} else {
-			logger.info("delete-member 취소");
-			logger.info("result=0");
-		}
-		return result;
-		
-		
-//		return "redirect:/member/main";
 	}
 	
 }
