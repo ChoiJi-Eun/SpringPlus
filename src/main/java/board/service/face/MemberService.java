@@ -53,4 +53,12 @@ public interface MemberService {
 	 */
 	public Member getUserinfo(Member member);
 
+	/**
+	 * 회원 탈퇴
+	 * 
+	 * @param id - 로그인한 회원의 정보
+	 * @return 
+	 */
+	public void deleteMember(String id);
+
 }

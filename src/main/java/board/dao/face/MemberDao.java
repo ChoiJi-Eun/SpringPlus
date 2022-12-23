@@ -49,6 +49,13 @@ public interface MemberDao {
 	 * @return member
 	 */
 	public Member selectMember(Member member);
+
+	/**
+	 * 회원 정보 삭제하기
+	 * 
+	 * @param id - 로그인한 회원의 정보
+	 */
+	public void delete(String id);
 	
 	
 }

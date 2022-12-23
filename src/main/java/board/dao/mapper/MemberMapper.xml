@@ -31,12 +31,22 @@
 		WHERE nick = #{nick}
 	</select>
 
-
+<!-- 회원정보조회 -->
 	<select id="selectMember" resultType="Member" parameterType="Member">
 		SELECT id, pw, nick, email, name, address addr, gender, phone
 		FROM member
 		WHERE id = #{id}
 	</select>
+<!-- 회원 탈퇴 -->	
+	<delete id="delete">
+		DELETE FROM member
+		WHERE id = #{id} AND pw = #{pw}
+	</delete>
+<!-- 아이디, 패스워드 체크 -->
+	<select id="pwChk" resultType="int">
+		SELECT count(*) FROM member
+		WHERE pw = #{pw}
+	</select>	
 </mapper>    
 
 

@@ -145,8 +145,9 @@ public class MemberController {
 		String id = (String) session.getAttribute("id");
 		logger.info("delete-id:{}", id);
 		
-//		Member member = memberService.deleteMember(id);
+		memberService.deleteMember(id);
 		
+		session.invalidate(); //세션정보지우기
 	}
 	
 //	@RequestMapping("/member/mypage/delete")

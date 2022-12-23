@@ -69,15 +69,21 @@ function memberDel() {
 
 	var result = confirm("회원탈퇴를 진행하시겠습니까??")
 	
-	if(result == true) {
-		alert("확인을 눌렀습니다.")
+// 	if(result == true) {
+// 		alert("확인을 눌렀습니다.")
 		$(location).attr("href", "/member/delete")
-	} else {
-		alert("회원탈퇴가 취소되었습니다")
-	}
+// 	} else {
+// 		alert("회원탈퇴가 취소되었습니다")
+// 	}
 	
+	//탈퇴시 비밀번호 눌러야 가능하게~ 
 	
-
+// 	if(result == true) {
+// 		alert("확인을 눌렀습니다.")
+// 		$(location).attr("href", "/member/delete")
+// 	} else {
+// 		alert("회원탈퇴가 취소되었습니다")
+// 	}
 }
 </script>
 
