@@ -162,9 +162,9 @@ public class MemberController {
 		String id = (String) session.getAttribute("id");
 		logger.info("delete-id:{}", id);
 		
-		memberService.deleteMember(id);
+//		memberService.deleteMember(id);
 	
-		session.invalidate(); //세션정보지우기
+//		session.invalidate(); //세션정보지우기
 	}
 	
 }

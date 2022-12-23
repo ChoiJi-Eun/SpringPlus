@@ -7,9 +7,15 @@
 <c:import url="../layout/header.jsp" />
 
 <style type="text/css">
-
-
-
+* {  
+	font-size: 1.05em;  
+}
+table {  
+	margin-left: 250px; 
+}
+#pw { width: 120px; }
+#btn { margin-left: 370px;  }
+img { width: 25px; height: 25px; margin-bottom: 7px; }
 </style>
 <script type="text/javascript">
 $(document).ready(function() {			/* 페이지 이동 */
@@ -29,7 +35,35 @@ $(document).ready(function() {			/* 페이지 이동 */
 		$(location).attr("href", "/member/logout")
 	})
 
+	
+	/* 비밀번호 눈 img */
+    $('.pwEye img').on('click',function(){
+        $('input').toggleClass('active');
+        if($('input').hasClass('active')){
+            $(this).attr('class',"fa fa-eye-slash fa-lg")
+            .prev('input').attr('type',"text");
+        }else{
+            $(this).attr('class',"fa fa-eye fa-lg")
+            .prev('input').attr('type','password');
+        }
+    });
 
+
+	/* 탈퇴버튼 클릭시 탈퇴 진행 */
+    $("#btnDelete").click(function(){
+
+        // 확인 대화상자 
+        if(confirm("삭제하시겠습니까?")){
+
+//             document.deleteform.action = "secessionpro";
+
+//             document.deleteform.submit();
+
+        } else {
+        	alert("다시 입력해주세요")
+        }
+
+    });
 })
 
 </script>
@@ -55,7 +89,26 @@ $(document).ready(function() {			/* 페이지 이동 */
 
 <div id="delete">
 
+    <form name="deleteform" method="post">
+ 
+        <table>
+            <tr>
+                <td id="pw">비밀번호</td>
 
+                <td class="pwEye">
+                	<input type="password" name="pwd" maxlength="50">
+                	<img alt="eyes" src="../resources/eye-solid.svg" class="fa fa-eye fa-lg">
+                </td>
+            </tr>
+        </table>
+
+
+        <br> 
+        <input id="btn" type="button" value="취소" onclick="location = 'index'">
+		&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" value="탈퇴" id="btnDelete"/> 
+
+    </form>
 
 
 
