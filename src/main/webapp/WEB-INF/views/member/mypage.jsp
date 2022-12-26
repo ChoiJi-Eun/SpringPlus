@@ -74,15 +74,15 @@ function memberDel() { //탈퇴시 비밀번호 눌러야 가능하게~  https:/
 	
 	
 	
-	var result = confirm("회원탈퇴를 진행하시겠습니까??")
+// 	var result = confirm("회원탈퇴를 진행하시겠습니까??")
 	
-	if( result == true ) {
-		alert("회원탈퇴 - 확인버튼을 눌렀습니다.")
-		$("#btnDelete").submit();
-		$(location).attr("href", "/member/main")
-	} else {
-		alert("회원탈퇴 - 취소버튼을 눌렀습니다.")
-	}
+// 	if( result == true ) {
+// 		alert("회원탈퇴 - 확인버튼을 눌렀습니다.")
+// 		$("#btnDelete").submit();
+// 		$(location).attr("href", "/member/main")
+// 	} else {
+// 		alert("회원탈퇴 - 취소버튼을 눌렀습니다.")
+// 	}
 	
 	
 

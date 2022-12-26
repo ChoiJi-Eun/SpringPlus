@@ -172,6 +172,19 @@ public class MemberController {
 		session.invalidate(); //세션정보지우기
 		
 		return "redirect:/member/main";
+		
+		
+//		// 비밀번호 체크 인터넷에서 따온 코드
+//        boolean result = member.checkPw(id, pwd);
+//        if(result){ // 비밀번호가 맞다면 삭제 처리
+//            member.deleteSecession(id);
+//			if (result) {
+//			session.invalidate(); //탈퇴시 로그아웃 처리
+//			}
+//            return "customer/secessionpro";
+//        } else { // 비밀번호가 일치하지 않는다면
+//            return "customer/secession";
+//        }
 	}
 	
 }
