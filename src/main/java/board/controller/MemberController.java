@@ -155,16 +155,23 @@ public class MemberController {
 //		return "redirect:/member/main";
 	}
 	
-	@RequestMapping("/member/delete")
-	public void memberDelete(HttpSession session) {
+	@GetMapping("/member/delete")
+	public void memberDelete() {
 		logger.info("/member/delete");
+	}
+	
+	@PostMapping("/member/delete")
+	public String memberDeleteProc(HttpSession session) {
+		logger.info("/member/delete - memberDeleteProc");
 		
 		String id = (String) session.getAttribute("id");
 		logger.info("delete-id:{}", id);
 		
-//		memberService.deleteMember(id);
-	
-//		session.invalidate(); //세션정보지우기
+		memberService.deleteMember(id);
+		
+		session.invalidate(); //세션정보지우기
+		
+		return "redirect:/member/main";
 	}
 	
 }
