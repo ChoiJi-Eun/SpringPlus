@@ -161,18 +161,13 @@ public class MemberController {
 	}
 	
 	@PostMapping("/member/delete")
-	public String memberDeleteProc(HttpSession session) {
+	public String memberDeleteProc(
+			HttpSession session, Member member
+			) {
 		logger.info("/member/delete - memberDeleteProc");
 		
 		String id = (String) session.getAttribute("id");
 		logger.info("delete-id:{}", id);
-		
-		memberService.deleteMember(id);
-		
-		session.invalidate(); //세션정보지우기
-		
-		return "redirect:/member/main";
-		
 		
 //		// 비밀번호 체크 인터넷에서 따온 코드
 //        boolean result = member.checkPw(id, pwd);
@@ -185,6 +180,15 @@ public class MemberController {
 //        } else { // 비밀번호가 일치하지 않는다면
 //            return "customer/secession";
 //        }
+		
+		int result =  memberService.pwChk(member);
+		if(result==1) {
+			memberService.deleteMember(id);
+			if (result==1) {
+				session.invalidate(); //탈퇴시 로그아웃 처리(세션정보지우기)
+			}
+		}
+		return "redirect:/member/main";
 	}
 	
 }

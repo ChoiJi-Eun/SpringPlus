@@ -55,9 +55,9 @@ $(document).ready(function() {			/* 페이지 이동 */
         // 확인 대화상자 
         if(confirm("삭제하시겠습니까?")){
 
-//             document.deleteform.action = "secessionpro";
-//             document.deleteform.submit();
-        	$("#btnDelete").submit();
+            document.deleteform.action = "memberDeleteProc";
+            document.deleteform.submit();
+//         	$("#btnDelete").submit();
 //         	$(location).attr("href", "/member/main")
 
         } else {
