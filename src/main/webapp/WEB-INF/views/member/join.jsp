@@ -9,7 +9,7 @@
 <script type="text/javascript">
 $(document).ready(function() {			/* 페이지 이동 */
 	$("#btnCancel").click(function() {
-		$(location).attr("href", "/member/main")
+		$(location).attr("href", "/member/main?id=${id}")
 	})
 	$("#id_check").click(function() {
 		$(location).attr("href", "/member/id")
@@ -20,16 +20,10 @@ $(document).ready(function() {			/* 유효성 검증 */
 	
 	$("form").submit(function() {
 		console.log("<form> submit event")
-		
-// 		//유효성 검증 후 submit하기
-// 		if( validate() ) {
-// 			$(this).submit()
-// 		}
 
 		validate();
 		
 		return true //submit 실행 시키기
-		
 	})
 
 	//아이디 입력을 시도할 때 아이디 메시지 삭제하기
@@ -66,7 +60,7 @@ $(document).ready(function() {			/* 유효성 검증 */
         if($('input').hasClass('active')){
             $(this).attr('class',"fa fa-eye-slash fa-lg")
             .prev('input').attr('type',"text");
-        }else{
+        } else {
             $(this).attr('class',"fa fa-eye fa-lg")
             .prev('input').attr('type','password');
         }
@@ -348,7 +342,8 @@ input {
 #btn { font-size: 1.2em;  }
 </style>
 
-<br><h4>회원 가입 페이지</h4>
+<br><h4>회원 가입 페이지
+<button type="button" id="btnCancel">멤버메인페이지</button></h4>
 <hr>
 
 <div id="join">
@@ -364,7 +359,7 @@ input {
 		<div class="pass">
 			<label>비밀번호<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
 			<input type="password" id="pw" name="pw" required placeholder=" 4~8의 영문자, 숫자만 입력해주세요">
-			<img alt="eyes" src="../resources/eye-solid.svg" class="fa fa-eye fa-lg">
+			<img alt="eyes" src="<%=request.getContextPath() %>../resources/eye-solid.svg" class="fa fa-eye fa-lg">
 			<span id="pwmsg"></span><br>
 		</div>
 	</div>
@@ -432,7 +427,7 @@ input {
 	
 	<div id="btn">
 		<button type="submit" id="submit">회원가입</button>&nbsp;&nbsp;&nbsp;
-		<button type="reset" id="btnCancel">취소</button></div><!-- #btn end -->
+		<button type="button" id="btnCancel">취소</button></div><!-- #btn end -->
 </form>
 </div><!-- #join end -->
 

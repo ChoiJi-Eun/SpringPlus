@@ -21,17 +21,17 @@ $(document).ready(function() {			/* 페이지 이동 */
 // 		$(location).attr("href", "/member/update")
 // 	})
 	$("#btnMain").click(function() {
-		$(location).attr("href", "/member/main")
+		$(location).attr("href", "/member/main?id=${id}")
 	})
 	$("#btnCancel1").click(function() {
-		$(location).attr("href", "/member/main")
+		$(location).attr("href", "/member/main?id=${id}")
 	})
 	$("#btnLogin").click(function() {
-		$(location).attr("href", "/member/login")
+		$(location).attr("href", "/member/login?id=${id}")
 	})
 // 	$("#btnDelete").click(function() {
-		$(location).attr("href", "/member/delete")
-	})
+// 		$(location).attr("href", "/member/delete")
+// 	})
 	$("#btnLogout").click(function() {
 		$(location).attr("href", "/member/logout")
 	})
@@ -44,7 +44,7 @@ $(document).ready(function() {			/* 유효성 검증 */
         if($('input').hasClass('active')){
             $(this).attr('class',"fa fa-eye-slash fa-lg")
             .prev('input').attr('type',"text");
-        }else{
+        } else {
             $(this).attr('class',"fa fa-eye fa-lg")
             .prev('input').attr('type','password');
         }

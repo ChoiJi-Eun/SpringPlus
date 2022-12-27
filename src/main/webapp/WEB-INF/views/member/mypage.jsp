@@ -39,7 +39,7 @@ $(document).ready(function() {			/* 페이지 이동 */
 		$(location).attr("href", "/member/login")
 	})
 // 	$("#btnDelete").click(function() {
-// 		$(location).attr("href", "/member/delete")
+// 		$(location).attr("href", "/member/delete?id=${id}")
 // 	})
 
 })
