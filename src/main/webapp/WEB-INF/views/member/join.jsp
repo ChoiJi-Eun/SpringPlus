@@ -54,14 +54,11 @@ $(document).ready(function() {			/* 유효성 검증 */
 	$("#phone4").focus(function() {
 		$("#phonemsg").html('')
 	})
+	
 	$("#nick").focus(function() {
 		$("#nickmsg").html('')
 	})
 	//---------------------------------
-
-	
-	
-
 
 })
 function validate() {
@@ -252,7 +249,22 @@ function validateNick( nick ) {
 	//--------------------
 	return true // nick 유효성 검증 완료	
 }
+function pwEye() {
+	
+	/* 비밀번호 눈 img */
+    $('.pass img').on('click',function(){
+        $('input').toggleClass('active');
+        if($('input').hasClass('active')){
+            $(this).attr('class',"fa fa-eye-slash fa-lg")
+            .prev('input').attr('type',"text");
+        }else{
+            $(this).attr('class',"fa fa-eye fa-lg")
+            .prev('input').attr('type','password');
+        }
+    });
 
+
+}
 </script>
 
 <!-- 다음카카오 주소 API, https://postcode.map.daum.net/guide -->
@@ -351,10 +363,14 @@ input {
 	<button type="button" id="id_check_btn" onclick="validateID(id)">중복검사</button> 
 	<span id="idmsg"></span><br>
 	
-	
-	<label>비밀번호<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
-	<input type="password" id="pw" name="pw" required placeholder=" 4~8의 영문자, 숫자만 입력해주세요">
-	<span id="pwmsg"></span><br>
+	<div class="input password">
+		<div class="pass">
+			<label>비밀번호<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
+			<input type="password" id="pw" name="pw" required placeholder=" 4~8의 영문자, 숫자만 입력해주세요">
+			<img alt="eyes" src="../resources/eye-solid.svg" class="fa fa-eye fa-lg">
+			<span id="pwmsg"></span><br>
+		</div>
+	</div>
 	
 	
 	<label>비밀번호 확인<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>

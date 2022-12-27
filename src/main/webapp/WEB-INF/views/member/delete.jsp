@@ -10,34 +10,83 @@
 * {  
 	font-size: 1.05em;  
 }
-table {  
-	margin-left: 250px; 
-}
-#pw { width: 120px; }
-/* #btn { margin-left: 370px;  } */
-img { width: 25px; height: 25px; margin-bottom: 7px; }
+label {  	margin-left: 290px;  }
+/* #pw { width: 120px; } */
+#pwmsg { color: red;  }
+img { width: 23px; height: 23px; margin-bottom: 7px; }
 </style>
 <script type="text/javascript">
 $(document).ready(function() {			/* 페이지 이동 */
 // 	$("#btnUpdate").click(function() {
 // 		$(location).attr("href", "/member/update")
 // 	})
-	$("#btnCancel").click(function() {
+	$("#btnMain").click(function() {
+		$(location).attr("href", "/member/main")
+	})
+	$("#btnCancel1").click(function() {
 		$(location).attr("href", "/member/main")
 	})
 	$("#btnLogin").click(function() {
 		$(location).attr("href", "/member/login")
 	})
-	$("#btnDelete").click(function() {
+// 	$("#btnDelete").click(function() {
 		$(location).attr("href", "/member/delete")
 	})
 	$("#btnLogout").click(function() {
 		$(location).attr("href", "/member/logout")
 	})
 
+<%--	/* 비밀번호 눈 img */
+    $('.pass img').on('click',function(){
+        $('input').toggleClass('active');
+        if($('input').hasClass('active')){
+            $(this).attr('class',"fa fa-eye-slash fa-lg")
+            .prev('input').attr('type',"text");
+        }else{
+            $(this).attr('class',"fa fa-eye fa-lg")
+            .prev('input').attr('type','password');
+        }
+    });
+--%>
+
+	/* 탈퇴버튼 클릭시 탈퇴 진행 https://prettywho.tistory.com/51   */
+    $("#btnDelete").click(function(){
+
+        // pwchk
+        if(confirm("삭제하시겠습니까?")){
+    		console.log("pw 중복검사 테스트");	
+    		
+    		var pw = $('#pw').val();// .id에 입력되는 값
+    		console.log("입력한 pw값 : " + pw);
+    		
+    		$.ajax({
+    			type : "post",
+    			url : "/member/mypage/delete",
+    			data : {pw : pw},
+    			dataType : "json",
+    			success : function( result ){
+    				
+    				if(result == 0) { // 1=>이미있는pw, 0=>없는pw(사용가능)
+    					$("#pwmsg").html('다시 시도해주세요');
+    				} else {
+    					alert("탈퇴되었습니다.")
+    					$("#btnDelete").submit();
+    				}
+    			},
+    			error : function(){
+    				alert("서버요청이 실패하였습니다");
+    			}
+    		}); //ajax end 
+    	}); //pwchk end
+    	return true //pwchk 검증 완료
+    	
+    }); //btnDelete end
+     
+})
+function pwEye() {
 	
 	/* 비밀번호 눈 img */
-    $('.pwEye img').on('click',function(){
+    $('.pass img').on('click',function(){
         $('input').toggleClass('active');
         if($('input').hasClass('active')){
             $(this).attr('class',"fa fa-eye-slash fa-lg")
@@ -49,34 +98,13 @@ $(document).ready(function() {			/* 페이지 이동 */
     });
 
 
-	/* 탈퇴버튼 클릭시 탈퇴 진행 https://prettywho.tistory.com/51   */
-    $("#btnDelete").click(function(){
-
-        // 확인 대화상자 
-        if(confirm("삭제하시겠습니까?")){
-
-//             document.deleteform.action = "memberDeleteProc";
-//             document.deleteform.submit();
-//         	$("#btnDelete").submit();
-//         	$(location).attr("href", "/member/main")
-
-        	if(){
-    	     	alert('비밀번호가 틀렸습니다.');
-    	     	return false;
-        } else {
-        	alert("탈퇴되었습니다.")
-        	$("#btnDelete").submit();
-        }
-        return true
-    });
-})
-
+}
 </script>
 
 <%-- 비로그인 상태 --%>
 <c:if test="${empty isLogin }">
 	<br><h4>회원 탈퇴  
-	<button type="button" id="btnCancel">멤버메인페이지</button>
+	<button type="button" id="btnMain">멤버메인페이지</button>
 	<button type="button" id="btnLogin">로그인</button>
 	</h4>
 	<hr>
@@ -86,7 +114,7 @@ $(document).ready(function() {			/* 페이지 이동 */
 <c:if test="${not empty isLogin }">
 
 <br><h4>회원 탈퇴
-<button type="button" id="btnCancel">멤버메인페이지</button>
+<button type="button" id="btnMain">멤버메인페이지</button>
 <button type="button" id="btnLogout">로그아웃</button>
 </h4>
 <hr>
@@ -96,29 +124,27 @@ $(document).ready(function() {			/* 페이지 이동 */
 
     <form name="deleteform" method="post" action="./delete" >
  
-        <table>
-            <tr>
-                <td id="pw">비밀번호</td>
+    <div class="input password">
+		<div class="pass">
+			<label>비밀번호</label>
+			<input type="password" id="pw"  name="pwd" maxlength="50">
+			<img alt="eyes" src="../resources/eye-solid.svg" class="fa fa-eye fa-lg" ><br>
+		</div>
+	</div>
+	
+    <br> 
 
-                <td class="pwEye">
-                	<input type="password" name="pwd" maxlength="50">
-                	<img alt="eyes" src="../resources/eye-solid.svg" class="fa fa-eye fa-lg">
-                </td>
-            </tr>
-        </table>
-
-
-        <br> 
-        <input id="btnCancel" type="button" value="취소" style="margin-left: 370px;">
+	<div id="btn">
+        <input id="btnCancel1" type="button" value="취소" style="margin-left: 370px;">
 		&nbsp;&nbsp;&nbsp;&nbsp;
-        <input id="btnDelete" type="submit" value="탈퇴" /> 
-
+        <input id="btnDelete" type="button" value="탈퇴" /> 
+	</div><!-- #btn end -->
+	
     </form>
 
 
 
 </div><!-- #delete end -->
-
 </c:if>
 
 <div class="clearfix" style=" text-align: center; height: 100px;" ></div>
