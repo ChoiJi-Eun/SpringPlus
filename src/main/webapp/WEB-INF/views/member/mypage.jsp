@@ -42,6 +42,9 @@ $(document).ready(function() {			/* 페이지 이동 */
 // 		$(location).attr("href", "/member/delete")
 // 	})
 
+})
+$(document).ready(function() {			/* 유효성 검증 */
+	
 	/* 비밀번호 눈 img */
     $('.pass img').on('click',function(){
         $('input').toggleClass('active');
@@ -66,8 +69,6 @@ $(document).ready(function() {			/* 페이지 이동 */
 	
 })
 	
-	
-
 </script>
 
 <%-- 비로그인 상태 --%>

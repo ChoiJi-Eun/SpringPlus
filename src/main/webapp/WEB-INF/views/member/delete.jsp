@@ -35,8 +35,11 @@ $(document).ready(function() {			/* 페이지 이동 */
 	$("#btnLogout").click(function() {
 		$(location).attr("href", "/member/logout")
 	})
+})
+$(document).ready(function() {			/* 유효성 검증 */
+		
 
-<%--	/* 비밀번호 눈 img */
+	/* 비밀번호 눈 img */
     $('.pass img').on('click',function(){
         $('input').toggleClass('active');
         if($('input').hasClass('active')){
@@ -46,8 +49,8 @@ $(document).ready(function() {			/* 페이지 이동 */
             $(this).attr('class',"fa fa-eye fa-lg")
             .prev('input').attr('type','password');
         }
-    });
---%>
+    });	
+
 
 	/* 탈퇴버튼 클릭시 탈퇴 진행 https://prettywho.tistory.com/51   */
     $("#btnDelete").click(function(){
@@ -83,22 +86,7 @@ $(document).ready(function() {			/* 페이지 이동 */
     }); //btnDelete end
      
 })
-function pwEye() {
-	
-	/* 비밀번호 눈 img */
-    $('.pass img').on('click',function(){
-        $('input').toggleClass('active');
-        if($('input').hasClass('active')){
-            $(this).attr('class',"fa fa-eye-slash fa-lg")
-            .prev('input').attr('type',"text");
-        }else{
-            $(this).attr('class',"fa fa-eye fa-lg")
-            .prev('input').attr('type','password');
-        }
-    });
 
-
-}
 </script>
 
 <%-- 비로그인 상태 --%>
@@ -141,8 +129,6 @@ function pwEye() {
 	</div><!-- #btn end -->
 	
     </form>
-
-
 
 </div><!-- #delete end -->
 </c:if>
