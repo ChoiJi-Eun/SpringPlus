@@ -60,6 +60,17 @@ $(document).ready(function() {			/* 유효성 검증 */
 	})
 	//---------------------------------
 
+	/* 비밀번호 눈 img */
+    $('.pass img').on('click',function(){
+        $('input').toggleClass('active');
+        if($('input').hasClass('active')){
+            $(this).attr('class',"fa fa-eye-slash fa-lg")
+            .prev('input').attr('type',"text");
+        }else{
+            $(this).attr('class',"fa fa-eye fa-lg")
+            .prev('input').attr('type','password');
+        }
+    });
 })
 function validate() {
 	if( !validateID( $("#id").val() ) ) { //id 유효성 검증 실패
@@ -249,22 +260,7 @@ function validateNick( nick ) {
 	//--------------------
 	return true // nick 유효성 검증 완료	
 }
-function pwEye() {
-	
-	/* 비밀번호 눈 img */
-    $('.pass img').on('click',function(){
-        $('input').toggleClass('active');
-        if($('input').hasClass('active')){
-            $(this).attr('class',"fa fa-eye-slash fa-lg")
-            .prev('input').attr('type',"text");
-        }else{
-            $(this).attr('class',"fa fa-eye fa-lg")
-            .prev('input').attr('type','password');
-        }
-    });
 
-
-}
 </script>
 
 <!-- 다음카카오 주소 API, https://postcode.map.daum.net/guide -->
@@ -356,7 +352,8 @@ input {
 <hr>
 
 <div id="join">
-<form action="<%=request.getContextPath() %>./join" method="post" onsubmit="return validate();">  
+<form action="<%=request.getContextPath() %>./join" method="post">  
+<%-- <form action="<%=request.getContextPath() %>./join" method="post" onsubmit="return validate();">   --%>
 
 	<label>아이디<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
 	<input type="text" class="id" id="id" name="id" required placeholder=" 4~10의 영문자, 숫자만 입력해주세요">

@@ -37,7 +37,6 @@ $(document).ready(function() {			/* 페이지 이동 */
 	})
 })
 $(document).ready(function() {			/* 유효성 검증 */
-		
 
 	/* 비밀번호 눈 img */
     $('.pass img').on('click',function(){
@@ -53,7 +52,7 @@ $(document).ready(function() {			/* 유효성 검증 */
 
 
 	/* 탈퇴버튼 클릭시 탈퇴 진행 https://prettywho.tistory.com/51   */
-    $("#btnDelete").click(function(){
+<%--    $("#btnDelete").click(function(){
 
         // pwchk
         if(confirm("삭제하시겠습니까?")){
@@ -84,7 +83,7 @@ $(document).ready(function() {			/* 유효성 검증 */
     	return true //pwchk 검증 완료
     	
     }); //btnDelete end
-     
+ --%>    
 })
 
 </script>
