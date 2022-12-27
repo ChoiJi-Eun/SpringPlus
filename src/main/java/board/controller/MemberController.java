@@ -169,9 +169,8 @@ public class MemberController {
 		String id = (String) session.getAttribute("id");
 		logger.info("delete-id:{}", id);
 		
-//		int result =  memberService.pwChk(member);
-		
-		int result=0;
+		int result =  memberService.pwChk(member);
+//		int result=0;
 		
 		if(result==1) {
 			memberService.deleteMember(id);

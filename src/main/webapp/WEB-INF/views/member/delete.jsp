@@ -130,7 +130,7 @@ $(document).ready(function() {			/* 유효성 검증 */
 	<div id="btn">
         <input id="btnCancel1" type="button" value="취소" style="margin-left: 370px;">
 		&nbsp;&nbsp;&nbsp;&nbsp;
-        <input id="btnDelete" type="button" value="탈퇴" /> 
+        <input id="btnDelete" type="submit" value="탈퇴" /> 
 	</div><!-- #btn end -->
 	
     </form>
