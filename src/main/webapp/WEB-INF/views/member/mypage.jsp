@@ -66,13 +66,7 @@ $(document).ready(function() {			/* 페이지 이동 */
 	
 })
 function memberDel() { //탈퇴시 비밀번호 눌러야 가능하게~  https://prettywho.tistory.com/51
-	
-	
-	
-	
-	
-	
-	
+
 	
 // 	var result = confirm("회원탈퇴를 진행하시겠습니까??")
 	

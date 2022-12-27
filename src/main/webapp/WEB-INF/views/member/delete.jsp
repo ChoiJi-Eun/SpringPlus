@@ -14,7 +14,7 @@ table {
 	margin-left: 250px; 
 }
 #pw { width: 120px; }
-#btn { margin-left: 370px;  }
+/* #btn { margin-left: 370px;  } */
 img { width: 25px; height: 25px; margin-bottom: 7px; }
 </style>
 <script type="text/javascript">
@@ -55,24 +55,19 @@ $(document).ready(function() {			/* 페이지 이동 */
         // 확인 대화상자 
         if(confirm("삭제하시겠습니까?")){
 
-            document.deleteform.action = "memberDeleteProc";
-            document.deleteform.submit();
+//             document.deleteform.action = "memberDeleteProc";
+//             document.deleteform.submit();
 //         	$("#btnDelete").submit();
 //         	$(location).attr("href", "/member/main")
 
+        	if(){
+    	     	alert('비밀번호가 틀렸습니다.');
+    	     	return false;
         } else {
-        	alert("다시 입력해주세요")
+        	alert("탈퇴되었습니다.")
+        	$("#btnDelete").submit();
         }
-        
-//     	var result = confirm("회원탈퇴를 진행하시겠습니까??")
-    	
-//     	if( result == true ) {
-//     		alert("회원탈퇴 - 확인버튼을 눌렀습니다.")
-//     		$("#btnDelete").submit();
-//     		$(location).attr("href", "/member/main")
-//     	} else {
-//     		alert("회원탈퇴 - 취소버튼을 눌렀습니다.")
-//     	}
+        return true
     });
 })
 
@@ -99,7 +94,7 @@ $(document).ready(function() {			/* 페이지 이동 */
 
 <div id="delete">
 
-    <form name="deleteform" method="post">
+    <form name="deleteform" method="post" action="./delete" >
  
         <table>
             <tr>
@@ -114,9 +109,9 @@ $(document).ready(function() {			/* 페이지 이동 */
 
 
         <br> 
-        <input id="btn" type="button" value="취소" onclick="location = 'index'">
+        <input id="btnCancel" type="button" value="취소" style="margin-left: 370px;">
 		&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="button" value="탈퇴" id="btnDelete"/> 
+        <input id="btnDelete" type="submit" value="탈퇴" /> 
 
     </form>
 
