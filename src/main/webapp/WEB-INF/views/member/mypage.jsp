@@ -138,7 +138,7 @@ $(document).ready(function() {			/* 유효성 검증 */
 	<div id="btn">
 <!-- 		<button type="button" id="btnUpdate">수정</button>&nbsp;&nbsp;&nbsp; -->
 <!-- 		<button type="button" id="btnCancel">취소</button>&nbsp;&nbsp;&nbsp; -->
-		<button type="button" id="btnDelete" onclick="location.href='/member/delete'">회원탈퇴</button>
+		<button type="button" id="btnDelete" onclick="location.href='/member/delete?id=${id}'">회원탈퇴</button>
 	</div><!-- #btn end -->
 		
 </form>
