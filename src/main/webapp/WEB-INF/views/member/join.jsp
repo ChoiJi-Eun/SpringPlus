@@ -8,8 +8,11 @@
 
 <script type="text/javascript">
 $(document).ready(function() {			/* 페이지 이동 */
+	$("#btnMain").click(function() {
+		$(location).attr("href", "/member/main")
+	})
 	$("#btnCancel").click(function() {
-		$(location).attr("href", "/member/main?id=${id}")
+		$(location).attr("href", "/member/main")
 	})
 	$("#id_check").click(function() {
 		$(location).attr("href", "/member/id")
@@ -57,6 +60,7 @@ $(document).ready(function() {			/* 유효성 검증 */
 	/* 비밀번호 눈 img */
     $('.pass img').on('click',function(){
         $('input').toggleClass('active');
+        
         if($('input').hasClass('active')){
             $(this).attr('class',"fa fa-eye-slash fa-lg")
             .prev('input').attr('type',"text");
@@ -343,7 +347,7 @@ input {
 </style>
 
 <br><h4>회원 가입 페이지
-<button type="button" id="btnCancel">멤버메인페이지</button></h4>
+<button type="button" id="btnMain">멤버메인페이지</button></h4>
 <hr>
 
 <div id="join">
@@ -406,7 +410,6 @@ input {
 <!-- 각각 받아온 걸 같은 컬럼에 저장하려면 java코드로 따로 합성해서 사용하기 -->
 
 	
-	
 	<label>주소</label>
 <!-- 	<input type="text" id="addr" name="addr"><br> -->
 
@@ -420,10 +423,9 @@ input {
 	<label></label>&nbsp;<input type="text" class="address_input_3" name="addr" id="sample6_detailAddress" placeholder="나머지 주소" style="width: 400px;"><br>
 		
 	
-	
-	
 	<label>이메일</label>
 	<input type="email" id="email" name="email" placeholder="example@gmail.com"><br><br>
+	
 	
 	<div id="btn">
 		<button type="submit" id="submit">회원가입</button>&nbsp;&nbsp;&nbsp;

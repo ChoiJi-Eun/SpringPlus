@@ -7,11 +7,8 @@
 <c:import url="../layout/header.jsp" />
 
 <style type="text/css">
-* {  
-	font-size: 1.05em;  
-}
+* { 	font-size: 1.05em;  }
 label {  	margin-left: 290px;  }
-/* #pw { width: 120px; } */
 #pwmsg { color: red;  }
 img { width: 23px; height: 23px; margin-bottom: 7px; }
 </style>
@@ -27,10 +24,10 @@ $(document).ready(function() {			/* 페이지 이동 */
 		$(location).attr("href", "/member/main?id=${id}")
 	})
 	$("#btnLogin").click(function() {
-		$(location).attr("href", "/member/login?id=${id}")
+		$(location).attr("href", "./login")
 	})
 // 	$("#btnDelete").click(function() {
-// 		$(location).attr("href", "/member/delete")
+// 		$(location).attr("href", "/member/delete?id=${id}")
 // 	})
 	$("#btnLogout").click(function() {
 		$(location).attr("href", "/member/logout")
@@ -41,6 +38,7 @@ $(document).ready(function() {			/* 유효성 검증 */
 	/* 비밀번호 눈 img */
     $('.pass img').on('click',function(){
         $('input').toggleClass('active');
+        
         if($('input').hasClass('active')){
             $(this).attr('class',"fa fa-eye-slash fa-lg")
             .prev('input').attr('type',"text");
@@ -49,7 +47,12 @@ $(document).ready(function() {			/* 유효성 검증 */
             .prev('input').attr('type','password');
         }
     });	
-
+    
+	//패스워드 입력을 시도할 때 패스워드 메시지 삭제하기
+	$("#pw").focus(function() {
+		$("#pwmsg").html('')
+	}) 
+	
 
 	/* 탈퇴버튼 클릭시 탈퇴 진행 https://prettywho.tistory.com/51   */
 <%--    $("#btnDelete").click(function(){
@@ -63,7 +66,7 @@ $(document).ready(function() {			/* 유효성 검증 */
     		
     		$.ajax({
     			type : "post",
-    			url : "/member/mypage/delete",
+    			url : "/member/mydelete",
     			data : {pw : pw},
     			dataType : "json",
     			success : function( result ){
@@ -83,7 +86,9 @@ $(document).ready(function() {			/* 유효성 검증 */
     	return true //pwchk 검증 완료
     	
     }); //btnDelete end
- --%>    
+--%>   
+    
+
 })
 
 </script>
@@ -91,7 +96,7 @@ $(document).ready(function() {			/* 유효성 검증 */
 <%-- 비로그인 상태 --%>
 <c:if test="${empty isLogin }">
 	<br><h4>회원 탈퇴  
-	<button type="button" id="btnMain">멤버메인페이지</button>
+	<button type="button" id="btnMainLogin" onclick="<%=request.getContextPath() %>./main">멤버메인페이지</button>
 	<button type="button" id="btnLogin">로그인</button>
 	</h4>
 	<hr>
@@ -114,12 +119,13 @@ $(document).ready(function() {			/* 유효성 검증 */
     <div class="input password">
 		<div class="pass">
 			<label>비밀번호</label>
-			<input type="password" id="pw"  name="pwd" maxlength="50">
+			<input type="password" id="pw"  name="pw" maxlength="50" onclick="this.value=''">
 			<img alt="eyes" src="../resources/eye-solid.svg" class="fa fa-eye fa-lg" ><br>
 		</div>
 	</div>
-	
     <br> 
+    
+    <span id="pwmsg"></span><br>
 
 	<div id="btn">
         <input id="btnCancel1" type="button" value="취소" style="margin-left: 370px;">

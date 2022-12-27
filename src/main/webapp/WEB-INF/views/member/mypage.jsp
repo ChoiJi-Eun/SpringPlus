@@ -38,9 +38,12 @@ $(document).ready(function() {			/* 페이지 이동 */
 	$("#btnLogin").click(function() {
 		$(location).attr("href", "/member/login")
 	})
-// 	$("#btnDelete").click(function() {
-// 		$(location).attr("href", "/member/delete?id=${id}")
-// 	})
+	$("#btnMain").click(function() {
+		$(location).attr("href", "/member/main?id=${id}")
+	})
+	$("#btnDelete").click(function() {
+		$(location).attr("href", "/member/delete?id=${id}")
+	})
 
 })
 $(document).ready(function() {			/* 유효성 검증 */
@@ -74,7 +77,7 @@ $(document).ready(function() {			/* 유효성 검증 */
 <%-- 비로그인 상태 --%>
 <c:if test="${empty isLogin }">
 	<br><h4>마이페이지  
-	<button type="button" id="btnCancel">멤버메인페이지</button>
+	<button type="button" id="btnMain">멤버메인페이지</button>
 	<button type="button" id="btnLogin">로그인</button>
 	</h4>
 	<hr>
@@ -83,7 +86,7 @@ $(document).ready(function() {			/* 유효성 검증 */
 <%-- 로그인 상태 --%>
 <c:if test="${not empty isLogin }">
 	<br><h4>마이페이지 
-	<button type="button" id="btnCancel">멤버메인페이지</button>
+	<button type="button" id="btnMain">멤버메인페이지</button>
 	<button type="button" id="btnLogout">로그아웃</button>
 	</h4>
 	<hr>
@@ -137,8 +140,8 @@ $(document).ready(function() {			/* 유효성 검증 */
 	
 	<div id="btn">
 <!-- 		<button type="button" id="btnUpdate">수정</button>&nbsp;&nbsp;&nbsp; -->
-<!-- 		<button type="button" id="btnCancel">취소</button>&nbsp;&nbsp;&nbsp; -->
-		<button type="button" id="btnDelete" onclick="location.href='/member/delete?id=${id}'">회원탈퇴</button>
+		<button type="button" id="btnCancel">취소</button>&nbsp;&nbsp;&nbsp;
+		<button type="button" id="btnDelete">회원탈퇴</button>
 	</div><!-- #btn end -->
 		
 </form>

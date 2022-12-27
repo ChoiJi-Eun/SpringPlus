@@ -39,7 +39,6 @@ public class MemberController {
 	@PostMapping("/member/join")
 	public String joinProc(Member memberParam) {
 		logger.info("/member/join [POST]");
-		
 		logger.info("{}", memberParam);
 		
 		memberService.join(memberParam);
@@ -138,10 +137,10 @@ public class MemberController {
 	}
 	//------------------------------------------------------------
 
-	@RequestMapping("/member/mypage/delete")
+	@RequestMapping("/member/mydelete")
 	@ResponseBody
 	public int delete(Member member) {
-		logger.info("/member/mypage - delete");
+		logger.info("/member/mydelete");
 		
 		int result = memberService.pwChk(member);
 		
@@ -154,6 +153,7 @@ public class MemberController {
 		
 //		return "redirect:/member/main";
 	}
+	
 	
 	@GetMapping("/member/delete")
 	public void memberDelete() {
