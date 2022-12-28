@@ -124,8 +124,8 @@ $(document).ready(function() {			/* 유효성 검증 */
 		</div>
 	</div>
     <br> 
-    
     <span id="pwmsg"></span><br>
+    
 
 	<div id="btn">
         <input id="btnCancel1" type="button" value="취소" style="margin-left: 370px;">

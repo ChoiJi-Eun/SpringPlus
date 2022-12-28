@@ -150,8 +150,6 @@ public class MemberController {
 			logger.info("delete-member 취소 / result=0");
 		}
 		return result;
-		
-//		return "redirect:/member/main";
 	}
 	
 	
