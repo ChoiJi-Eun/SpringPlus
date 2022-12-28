@@ -86,30 +86,34 @@ function validate() {
 		return false //submit 중단
 	}	
 	//-----------------------------------
-	$("#id_check_btn").click(function(){
-		$("input[name=checked_id]").val('y')
-	})
-	$("#nick_check_btn").click(function(){
-		$("input[name=checked_nick]").val('y')
-	})
-	
+
+	if($("input[name='checked_id']").val()==''){
+		alert('아이디 중복 확인을 해주세요!!'); 
+		return false;
+	}
+	if($("input[name='checked_nick']").val()==''){
+		alert('닉네임 중복 확인을 해주세요!!');
+		return false;
+	}	
 
 	//-----------------------------------
 	return true
 }
-$(function(){
+<%-- https://sir.kr/qa/322058  --%>
+<%-- https://okky.kr/articles/371837  --%>
+<%-- https://books.google.co.kr/books?id=5KfJDwAAQBAJ&pg=PA144&lpg=PA144&dq=%EC%95%84%EC%9D%B4%EB%94%94+%EC%A4%91%EB%B3%B5%EC%B2%B4%ED%81%AC+%ED%96%88%EB%8A%94%EC%A7%80+%ED%99%95%EC%9D%B8&source=bl&ots=in7ed4ve6F&sig=ACfU3U2RHj8tadwCQeXRmG06S_D4U8qp3g&hl=ko&sa=X&ved=2ahUKEwit1q7OqZz8AhUAgVYBHQFeBS84HhDoAXoECBcQAw#v=onepage&q=%EC%95%84%EC%9D%B4%EB%94%94%20%EC%A4%91%EB%B3%B5%EC%B2%B4%ED%81%AC%20%ED%96%88%EB%8A%94%EC%A7%80%20%ED%99%95%EC%9D%B8&f=false --%>
+<%--   --%>
+<%-- 아이디 중복 alert 나온뒤 검사해도 계속 가입진행 안되는데??(닉네임은 아얘 안되고) --%>
+$(function(){   
     $("#submit").click(function(){
+    	
+    	$("#id_check_btn").click(function(){
+    		$("input[name=checked_id]").val("y")
+    	})
+    	$("#nick_check_btn").click(function(){
+    		$("input[name=checked_nick]").val("y")
+    	})
 
-		if($("input[name='checked_id']").val()==''){
-			alert('아이디 중복 확인을 해주세요!!');
-			$("input[name='checked_id']").eq(0).focus();
-			return false;
-		}
-		if($("input[name='checked_nick']").val()==''){
-			alert('닉네임 중복 확인을 해주세요!!');
-			$("input[name='checked_nick']").eq(0).focus();
-			return false;
-		}
     });  
 });
 //input 데이터 유효성 검증하기
