@@ -86,7 +86,24 @@ function validate() {
 		return false //submit 중단
 	}	
 	//-----------------------------------
-
+	<%--	//아이디 중복검사를 했는지 안했는지 확인 	
+	if( $('#id_check_btn') == 0 ) {
+		$("#idmsg").html("아이디 중복검사를 해주세요!")
+		return false //submit 중단
+	}
+	//닉네임 중복검사를 했는지 안했는지 확인
+	if( $('#nick_check_btn') == 0 ) {
+		$("#nickmsg").html("닉네임 중복검사를 해주세요!")
+		return false	
+	}
+	//아이디 중복검사+닉네임 중복검사를 했는지 안했는지 확인
+	if(id_check_btn==0 || nick_check_btn==0){
+     	alert('아이디와 닉네임 중복체크를 해주세요');
+		$("#idmsg").html("아이디 중복검사를 해주세요!")
+		$("#nickmsg").html("닉네임 중복검사를 해주세요!")
+   		return false;
+	} --%>
+	
 	if($("input[name='checked_id']").val()==''){
 		alert('아이디 중복 확인을 해주세요!!'); 
 		return false;
