@@ -25,7 +25,9 @@ $(document).ready(function() {			/* 유효성 검증 */
 		console.log("<form> submit event")
 
 		validate();
+		
 		alert("회원가입을 축하합니다!!");
+		
 		return true //submit 실행 시키기
 	})
 
@@ -84,30 +86,32 @@ function validate() {
 		return false //submit 중단
 	}	
 	//-----------------------------------
-	//아이디 중복검사 유효성 검증	
-	if( $('#id_check_btn') == 0 ) {
-		$("#idmsg").html("아이디 중복검사를 해주세요!")
-		return false //submit 중단
-	}
-	//닉네임 중복검사 유효성 검증	
-	if( $('#nick_check_btn') == 0 ) {
-		$("#nickmsg").html("닉네임 중복검사를 해주세요!")
-		return false	
-	}
-	//아이디 중복검사+닉네임 중복검사 유효성 검증
-	if(id_check_btn==0 || nick_check_btn==0){
-     	alert('아이디와 닉네임 중복체크를 해주세요');
-		$("#idmsg").html("아이디 중복검사를 해주세요!")
-		$("#nickmsg").html("닉네임 중복검사를 해주세요!")
-   		return false;
-	} 
-	
+	$("#id_check_btn").click(function(){
+		$("input[name=checked_id]").val('y')
+	})
+	$("#nick_check_btn").click(function(){
+		$("input[name=checked_nick]").val('y')
+	})
 	
 
 	//-----------------------------------
- 	alert("회원가입을 축하합니다");
 	return true
 }
+$(function(){
+    $("#submit").click(function(){
+
+		if($("input[name='checked_id']").val()==''){
+			alert('아이디 중복 확인을 해주세요!!');
+			$("input[name='checked_id']").eq(0).focus();
+			return false;
+		}
+		if($("input[name='checked_nick']").val()==''){
+			alert('닉네임 중복 확인을 해주세요!!');
+			$("input[name='checked_nick']").eq(0).focus();
+			return false;
+		}
+    });  
+});
 //input 데이터 유효성 검증하기
 function validateID( id ) {
 	//-----아이디 유효성 검증
@@ -159,8 +163,6 @@ function validateID( id ) {
 				alert("서버요청이 실패하였습니다");
 			} 
 		}); //ajax end
-		
-
 	}) //id 중복검사 end
 	//-----------------------------
 	return true // id 유효성 검증 완료
@@ -357,6 +359,8 @@ input {
 	<input type="text" class="id" id="id" name="id" required placeholder=" 4~10의 영문자, 숫자만 입력해주세요">
 	<button type="button" id="id_check_btn" onclick="validateID(id)">중복검사</button> 
 	<span id="idmsg"></span><br>
+	<input type="hidden" name="checked_id" value="">
+	
 	
 	<div class="input password">
 		<div class="pass">
@@ -377,6 +381,7 @@ input {
 	<input type="text" id="nick" name="nick" required placeholder=" 3~10의 모든 문자를 입력해주세요">
 	<button type="button" id="nick_check_btn" onclick="validateNick(nick)">중복검사</button> 
 	<span id="nickmsg"></span><br>
+	<input type="hidden" name="checked_nick" value="">
 	
 	
 	<label>이름<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
