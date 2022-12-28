@@ -173,6 +173,7 @@ public class MemberController {
 		if(result==1) {
 			memberService.deleteMember(id);
 			if (result==1) {
+				logger.info("deleteMember() / result=1");
 				session.invalidate(); //탈퇴시 로그아웃 처리(세션정보지우기)
 			}
 			return "redirect:/member/main";

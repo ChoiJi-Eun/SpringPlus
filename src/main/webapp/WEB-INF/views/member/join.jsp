@@ -9,7 +9,7 @@
 <script type="text/javascript">
 $(document).ready(function() {			/* 페이지 이동 */
 	$("#btnMain").click(function() {
-		$(location).attr("href", "/member/main")
+		$(location).attr("href", "./main")
 	})
 	$("#btnCancel").click(function() {
 		$(location).attr("href", "/member/main?id=${id}")
@@ -25,7 +25,7 @@ $(document).ready(function() {			/* 유효성 검증 */
 		console.log("<form> submit event")
 
 		validate();
-		
+		alert("회원가입을 축하합니다!!");
 		return true //submit 실행 시키기
 	})
 
@@ -83,6 +83,7 @@ function validate() {
 	if(!validateNick( $("#nick").val() )) {   //nick 유효성 검증 실패
 		return false //submit 중단
 	}	
+	//-----------------------------------
 	//아이디 중복검사 유효성 검증	
 	if( $('#id_check_btn') == 0 ) {
 		$("#idmsg").html("아이디 중복검사를 해주세요!")
@@ -93,20 +94,18 @@ function validate() {
 		$("#nickmsg").html("닉네임 중복검사를 해주세요!")
 		return false	
 	}
+	//아이디 중복검사+닉네임 중복검사 유효성 검증
+	if(id_check_btn==0 || nick_check_btn==0){
+     	alert('아이디와 닉네임 중복체크를 해주세요');
+		$("#idmsg").html("아이디 중복검사를 해주세요!")
+		$("#nickmsg").html("닉네임 중복검사를 해주세요!")
+   		return false;
+	} 
 	
-	//-----------------------------------
-	if(confirm("회원가입을 하시겠습니까?")){
-		if(id_check_btn==0 || nick_check_btn==0){
-	     	alert('아이디와 닉네임 중복체크를 해주세요');
-	     	return false;
-	 } else {
-	     alert("회원가입을 축하합니다");
-	// 	        $("form").submit();
-	 }
-//} //회원가입 버튼에 TYPE을 submit에서 button으로 바꿔주고 
-//	form 에 name="" id=""을 추가
 	
+
 	//-----------------------------------
+ 	alert("회원가입을 축하합니다");
 	return true
 }
 //input 데이터 유효성 검증하기
