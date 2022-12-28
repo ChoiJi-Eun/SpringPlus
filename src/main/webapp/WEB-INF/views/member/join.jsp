@@ -12,7 +12,7 @@ $(document).ready(function() {			/* 페이지 이동 */
 		$(location).attr("href", "/member/main")
 	})
 	$("#btnCancel").click(function() {
-		$(location).attr("href", "/member/main")
+		$(location).attr("href", "/member/main?id=${id}")
 	})
 	$("#id_check").click(function() {
 		$(location).attr("href", "/member/id")
@@ -428,8 +428,10 @@ input {
 	
 	
 	<div id="btn">
-		<button type="submit" id="submit">회원가입</button>&nbsp;&nbsp;&nbsp;
-		<button type="button" id="btnCancel">취소</button></div><!-- #btn end -->
+		<button type="button" id="submit">회원가입</button>&nbsp;&nbsp;&nbsp;
+		<button type="button" id="btnCancel">취소</button>
+	</div><!-- #btn end -->
+	
 </form>
 </div><!-- #join end -->
 

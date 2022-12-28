@@ -44,7 +44,7 @@
 <!-- 회원 탈퇴 -->	
 	<delete id="delete">
 		DELETE FROM member
-		WHERE id = #{id} AND pw = #{pw}
+		WHERE id = #{id}
 	</delete>
 	
 <!-- 패스워드 체크(탈퇴시) -->
