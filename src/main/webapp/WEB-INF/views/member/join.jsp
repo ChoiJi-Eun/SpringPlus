@@ -230,6 +230,16 @@ function validatePhone(  ) {
 }
 function validateNick( nick ) {
 	console.log("nick checkbtn")
+	
+	var con = document.getElementById("nickDiv");
+	
+    if(con.style.display=='none'){ 		
+    	con.style.display = 'block'; 	
+    }else{ 		
+    	con.style.display = 'none'; 	
+    }	
+	
+	
 	//-----닉네임 유효성 검증	
 	//닉네임  입력값 검증
 	if( nick == '' ) {
@@ -351,12 +361,12 @@ function sample6_execDaumPostcode() {
 </script>
 <style type="text/css">
 #join {
-	margin-left: 170px; 
+	margin-left: 165px; 
 	font-size: 1.2em;
 }
 #join label { 
 	display: inline-block;
-	width: 122px;
+	width: 121px;
 }
 #submit { margin-left: 130px; }
 img { width: 15px; height: 15px; margin-bottom: 7px; }
@@ -364,7 +374,7 @@ span { margin-left: 10px; font-weight: bolder;   }
 [id*="msg"] { color: red;  }   
 input {
 	margin-bottom: 7px;
-	width: 300px;
+	width: 287px;
 }
 #btn { font-size: 1.2em;  }
 </style>
@@ -402,11 +412,12 @@ input {
 	<label>닉네임<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
 	<input type="text" id="nick" name="nick" required placeholder=" 3~10의 모든 문자를 입력해주세요">
 	<button type="button" id="nick_check_btn" onclick="validateNick(nick)">중복검사</button>
-	<span id="nickmsg"></span> 
-	<input type="hidden" name="checked_nick" value="">
-	
-	<label></label>
-	<span id="nickmsg" style="display: none;"></span><br>
+<!-- 		<span id="nickmsg"></span>  -->
+	<input type="hidden" name="checked_nick" value=""><br>
+		
+	<div id="nickDiv"  style="display: none; margin-left: 121px;">
+		<span id="nickmsg"></span><br>
+	</div>
 	
 	
 	<label>이름<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
