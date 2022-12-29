@@ -361,12 +361,12 @@ function sample6_execDaumPostcode() {
 </script>
 <style type="text/css">
 #join {
-	margin-left: 165px; 
+	margin-left: 170px; 
 	font-size: 1.2em;
 }
 #join label { 
 	display: inline-block;
-	width: 121px;
+	width: 125px;
 }
 #submit { margin-left: 130px; }
 img { width: 15px; height: 15px; margin-bottom: 7px; }
