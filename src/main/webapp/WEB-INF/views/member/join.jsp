@@ -231,6 +231,7 @@ function validatePhone(  ) {
 function validateNick( nick ) {
 	console.log("nick checkbtn")
 	
+	//--- nickmsg display[none/block]
 	var con = document.getElementById("nickDiv");
 	
     if(con.style.display=='none'){ 		
