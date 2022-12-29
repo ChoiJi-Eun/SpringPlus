@@ -21,6 +21,23 @@ $(document).ready(function() {			/* 페이지 이동 */
 })
 $(document).ready(function() {			/* 유효성 검증 */
 	
+<%-- https://sir.kr/qa/322058  --%>
+<%-- https://okky.kr/articles/371837  --%>
+<%-- https://books.google.co.kr/books?id=5KfJDwAAQBAJ&pg=PA144&lpg=PA144&dq=%EC%95%84%EC%9D%B4%EB%94%94+%EC%A4%91%EB%B3%B5%EC%B2%B4%ED%81%AC+%ED%96%88%EB%8A%94%EC%A7%80+%ED%99%95%EC%9D%B8&source=bl&ots=in7ed4ve6F&sig=ACfU3U2RHj8tadwCQeXRmG06S_D4U8qp3g&hl=ko&sa=X&ved=2ahUKEwit1q7OqZz8AhUAgVYBHQFeBS84HhDoAXoECBcQAw#v=onepage&q=%EC%95%84%EC%9D%B4%EB%94%94%20%EC%A4%91%EB%B3%B5%EC%B2%B4%ED%81%AC%20%ED%96%88%EB%8A%94%EC%A7%80%20%ED%99%95%EC%9D%B8&f=false --%>
+<%--   --%>
+<%-- 아이디 중복 alert 나온뒤 검사해도 계속 가입진행 안되는데??(닉네임은 아얘 안되고) --%>
+// $(function(){   
+    $("#submit").click(function(){
+    	
+    	$("#id_check_btn").click(function(){
+    		$("input[name=checked_id]").val("y")
+    	})
+    	$("#nick_check_btn").click(function(){
+    		$("input[name=checked_nick]").val("y")
+    	})
+
+    });  
+// });	
 	$("form").submit(function() {
 		console.log("<form> submit event")
 
@@ -86,17 +103,17 @@ function validate() {
 		return false //submit 중단
 	}	
 	//-----------------------------------
-	<%--	//아이디 중복검사를 했는지 안했는지 확인 	
+	<%--	//아이디 중복검사를 했는지 안했는지 확인 - 안됨	
 	if( $('#id_check_btn') == 0 ) {
 		$("#idmsg").html("아이디 중복검사를 해주세요!")
 		return false //submit 중단
 	}
-	//닉네임 중복검사를 했는지 안했는지 확인
+	//닉네임 중복검사를 했는지 안했는지 확인 - 안됨
 	if( $('#nick_check_btn') == 0 ) {
 		$("#nickmsg").html("닉네임 중복검사를 해주세요!")
 		return false	
 	}
-	//아이디 중복검사+닉네임 중복검사를 했는지 안했는지 확인
+	//아이디 중복검사+닉네임 중복검사를 했는지 안했는지 확인 - 안됨
 	if(id_check_btn==0 || nick_check_btn==0){
      	alert('아이디와 닉네임 중복체크를 해주세요');
 		$("#idmsg").html("아이디 중복검사를 해주세요!")
@@ -116,23 +133,7 @@ function validate() {
 	//-----------------------------------
 	return true
 }
-<%-- https://sir.kr/qa/322058  --%>
-<%-- https://okky.kr/articles/371837  --%>
-<%-- https://books.google.co.kr/books?id=5KfJDwAAQBAJ&pg=PA144&lpg=PA144&dq=%EC%95%84%EC%9D%B4%EB%94%94+%EC%A4%91%EB%B3%B5%EC%B2%B4%ED%81%AC+%ED%96%88%EB%8A%94%EC%A7%80+%ED%99%95%EC%9D%B8&source=bl&ots=in7ed4ve6F&sig=ACfU3U2RHj8tadwCQeXRmG06S_D4U8qp3g&hl=ko&sa=X&ved=2ahUKEwit1q7OqZz8AhUAgVYBHQFeBS84HhDoAXoECBcQAw#v=onepage&q=%EC%95%84%EC%9D%B4%EB%94%94%20%EC%A4%91%EB%B3%B5%EC%B2%B4%ED%81%AC%20%ED%96%88%EB%8A%94%EC%A7%80%20%ED%99%95%EC%9D%B8&f=false --%>
-<%--   --%>
-<%-- 아이디 중복 alert 나온뒤 검사해도 계속 가입진행 안되는데??(닉네임은 아얘 안되고) --%>
-$(function(){   
-    $("#submit").click(function(){
-    	
-    	$("#id_check_btn").click(function(){
-    		$("input[name=checked_id]").val("y")
-    	})
-    	$("#nick_check_btn").click(function(){
-    		$("input[name=checked_nick]").val("y")
-    	})
 
-    });  
-});
 //input 데이터 유효성 검증하기
 function validateID( id ) {
 	//-----아이디 유효성 검증
@@ -400,20 +401,25 @@ input {
 	
 	<label>닉네임<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
 	<input type="text" id="nick" name="nick" required placeholder=" 3~10의 모든 문자를 입력해주세요">
-	<button type="button" id="nick_check_btn" onclick="validateNick(nick)">중복검사</button> 
-	<span id="nickmsg"></span><br>
+	<button type="button" id="nick_check_btn" onclick="validateNick(nick)">중복검사</button>
+	<span id="nickmsg"></span> 
 	<input type="hidden" name="checked_nick" value="">
+	
+	<label></label>
+	<span id="nickmsg" style="display: none;"></span><br>
 	
 	
 	<label>이름<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
 	<input type="text" id="name" name="name" required>
 	<span id="namemsg"></span><br>
 	
+	
 	<label>성별</label>
 	<input type="radio" name="gender" value="man" checked="checked" style="width: 50px; margin: 0px -20px -20px;">&nbsp;남자
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<input type="radio" name="gender" value="woman" required style="width: 50px; margin: 0px -20px -20px;">&nbsp;여자<br>
 <!-- 	<span id="gendermsg" name=""></span> -->
+	
 	
 	<label>전화번호<img class="mustimg" alt="필수" src="../resources/mustimg.png"></label>
 	<select id="phone1" name="phone" style="width: 75px; height: 29.99px;" required>
