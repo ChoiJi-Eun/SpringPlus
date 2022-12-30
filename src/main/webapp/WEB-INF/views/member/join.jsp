@@ -21,6 +21,8 @@ $(document).ready(function() {			/* 페이지 이동 */
 })
 $(document).ready(function() {			/* 유효성 검증 */
 	
+<%-- 회원가입시 중복검사 버튼 2개 눌러야 회원가입 진행되게 하는 코드
+			수정이 필요함 (미완성)  --%>
 <%-- https://sir.kr/qa/322058  --%>
 <%-- https://okky.kr/articles/371837  --%>
 <%-- https://books.google.co.kr/books?id=5KfJDwAAQBAJ&pg=PA144&lpg=PA144&dq=%EC%95%84%EC%9D%B4%EB%94%94+%EC%A4%91%EB%B3%B5%EC%B2%B4%ED%81%AC+%ED%96%88%EB%8A%94%EC%A7%80+%ED%99%95%EC%9D%B8&source=bl&ots=in7ed4ve6F&sig=ACfU3U2RHj8tadwCQeXRmG06S_D4U8qp3g&hl=ko&sa=X&ved=2ahUKEwit1q7OqZz8AhUAgVYBHQFeBS84HhDoAXoECBcQAw#v=onepage&q=%EC%95%84%EC%9D%B4%EB%94%94%20%EC%A4%91%EB%B3%B5%EC%B2%B4%ED%81%AC%20%ED%96%88%EB%8A%94%EC%A7%80%20%ED%99%95%EC%9D%B8&f=false --%>
